@@ -37,12 +37,26 @@ import { TiltCard } from "@/components/velora/tilt-card";
 import { Typewriter } from "@/components/velora/typewriter";
 import { siteConfig } from "@/lib/site-config";
 
-const teamMembers = [
-  { name: "Juan Saby", role: "Ingeniería en Sistemas", image: "/resources/juan.jpg" },
-  { name: "Carolina Corazza", role: "Ingeniería en Sistemas", image: "/resources/carolina.jpg" },
-  { name: "Belén Ramello", role: "Ingeniería en Sistemas", image: "/resources/belen.jpg" },
-];
+const basePath =
+  process.env.GITHUB_ACTIONS === "true" ? "/spintsoft-landing-page" : "";
 
+const teamMembers = [
+  {
+    name: "Juan Saby",
+    role: "Ingeniería en Sistemas",
+    image: `${basePath}/resources/juan.jpg`,
+  },
+  {
+    name: "Carolina Corazza",
+    role: "Ingeniería en Sistemas",
+    image: `${basePath}/resources/carolina.jpg`,
+  },
+  {
+    name: "Belén Ramello",
+    role: "Ingeniería en Sistemas",
+    image: `${basePath}/resources/belen.jpg`,
+  },
+];
 export default function Home() {
   return (
     <main className="relative bg-background text-foreground selection:bg-[#f2a541]/30 selection:text-[#577590]">

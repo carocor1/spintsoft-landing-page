@@ -3,38 +3,31 @@ import { HomeIcon } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import { SiteHeader } from "@/components/site-header";
-import { RetroGrid } from "@/components/velora/retro-grid";
 import { BlurFade } from "@/components/velora/blur-fade";
 import { AnimatedGradientText } from "@/components/velora/animated-gradient-text";
 
 export default function NotFound() {
   return (
-    <main className="relative">
+    <main className="relative bg-background text-foreground">
       <SiteHeader />
-      <section className="relative flex min-h-svh items-center justify-center overflow-hidden">
-        <RetroGrid />
-        <div className="relative mx-auto max-w-2xl px-4 py-32 text-center">
+      <section className="relative flex min-h-svh items-center justify-center overflow-hidden px-4">
+        <div className="relative mx-auto max-w-xl py-32 text-center">
           <BlurFade>
-            <p className="font-mono text-8xl font-semibold tracking-tight lg:text-9xl">
+            <p className="font-mono text-8xl font-extrabold tracking-tight lg:text-9xl text-foreground">
               <AnimatedGradientText>404</AnimatedGradientText>
             </p>
-            <h1 className="mt-6 text-2xl font-semibold tracking-tight lg:text-3xl">
-              This page scrolled past the horizon
+            <h1 className="mt-6 text-2xl sm:text-3xl font-extrabold tracking-tight">
+              Página no encontrada
             </h1>
-            <p className="mx-auto mt-4 max-w-md text-muted-foreground">
-              The page you&apos;re looking for doesn&apos;t exist or was moved.
-              Even this 404 is built from Velora primitives — the grid behind
-              it is one component.
+            <p className="mx-auto mt-4 max-w-md text-sm sm:text-base text-muted-foreground leading-relaxed">
+              La página que estás buscando no existe o fue movida.
             </p>
-            <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
-              <Button size="lg" className="rounded-full" asChild>
+            <div className="mt-8 flex items-center justify-center gap-4">
+              <Button size="lg" className="rounded-full bg-[#577590] hover:bg-[#435b71] text-white" asChild>
                 <Link href="/">
-                  <HomeIcon className="size-4" />
-                  Back home
+                  <HomeIcon className="size-4 mr-2" />
+                  Volver al inicio
                 </Link>
-              </Button>
-              <Button variant="ghost" size="lg" asChild>
-                <Link href="/components">Browse components</Link>
               </Button>
             </div>
           </BlurFade>

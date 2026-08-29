@@ -4,7 +4,7 @@
 export const siteConfig = {
   name: "Spintsoft",
   url: (
-    process.env.NEXT_PUBLIC_SITE_URL ?? "https://spintsoft.com"
+    process.env.NEXT_PUBLIC_SITE_URL ?? "https://spintsoft.com.ar"
   ).replace(/\/$/, ""),
   email: "spintsoft@gmail.com",
   tagline: "Software a Medida & Sistemas de Información",

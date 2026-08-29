@@ -2,19 +2,15 @@
 
 import {
   BoxesIcon,
-  ChartColumn,
   ClockIcon,
   Code2Icon,
   ExternalLinkIcon,
-  FlameIcon,
   HeartIcon,
   MailIcon,
   MapPinIcon,
   RocketIcon,
-  TargetIcon,
   TrendingUpIcon,
   UsersIcon,
-  ZapIcon,
 } from "lucide-react";
 import { SiInstagram } from "react-icons/si";
 

@@ -2,12 +2,14 @@
 
 import { useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
+import Image from "next/image";
 
 import { cn } from "@/lib/utils";
 
-interface TooltipItem {
+export interface TooltipItem {
   name: string;
   role?: string;
+  image?: string;
 }
 
 interface AnimatedTooltipProps {
@@ -25,7 +27,7 @@ const gradients = [
 ];
 
 /**
- * Avatar row with springy name tooltips on hover.
+ * Avatar row with springy name tooltips on hover and image support.
  */
 export function AnimatedTooltip({ items, className }: AnimatedTooltipProps) {
   const [hovered, setHovered] = useState<number | null>(null);
@@ -67,11 +69,19 @@ export function AnimatedTooltip({ items, className }: AnimatedTooltipProps) {
             </AnimatePresence>
             <span
               className={cn(
-                "relative flex size-11 cursor-default items-center justify-center rounded-full bg-gradient-to-br text-xs font-semibold text-white ring-2 ring-background transition-transform duration-200 group-hover:z-30 group-hover:scale-110",
-                gradients[i % gradients.length]
+                "relative flex size-12 cursor-default items-center justify-center overflow-hidden rounded-full bg-gradient-to-br text-xs font-semibold text-white ring-2 ring-background transition-transform duration-200 group-hover:z-30 group-hover:scale-115 shadow-sm",
+                !item.image && gradients[i % gradients.length]
               )}
             >
-              {initials}
+              {item.image ? (
+                <img
+                  src={item.image}
+                  alt={item.name}
+                  className="size-full object-cover object-center"
+                />
+              ) : (
+                initials
+              )}
             </span>
           </div>
         );

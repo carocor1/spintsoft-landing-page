@@ -1,41 +1,49 @@
 import Link from "next/link";
-import { SparklesIcon, StarIcon } from "lucide-react";
+import { Code2Icon, SparklesIcon, SendIcon } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import { ThemeToggle } from "@/components/theme-toggle";
-import { siteConfig } from "@/lib/site-config";
 
 export function SiteHeader() {
   return (
-    <header className="fixed inset-x-0 top-0 z-50 border-b border-border/40 bg-background/70 backdrop-blur-xl">
+    <header className="fixed inset-x-0 top-0 z-50 border-b border-border/50 bg-background/80 backdrop-blur-xl shadow-xs">
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4 lg:px-8">
-        <Link href="/" className="flex items-center gap-2 font-semibold">
-          <SparklesIcon className="size-5 text-primary" />
-          Velora UI
+        <Link href="/" className="flex items-center gap-2.5 font-bold tracking-tight text-foreground group">
+          <span className="flex size-9 items-center justify-center rounded-xl bg-gradient-to-br from-[#577590] via-[#f2a541] to-[#f08a4b] text-white shadow-sm transition-transform duration-200 group-hover:scale-105">
+            <Code2Icon className="size-5" />
+          </span>
+          <div className="flex flex-col">
+            <span className="text-lg leading-tight font-extrabold text-foreground tracking-tight">
+              Spint<span className="text-[#f08a4b]">soft</span>
+            </span>
+            <span className="text-[10px] font-medium text-muted-foreground uppercase tracking-widest -mt-0.5">
+              Software a Medida
+            </span>
+          </div>
         </Link>
-        <nav className="hidden items-center gap-6 text-sm text-muted-foreground md:flex">
-          <Link href="/components" className="transition-colors hover:text-foreground">
-            Components
-          </Link>
-          <Link href="/themes" className="transition-colors hover:text-foreground">
-            Themes
-          </Link>
-          <Link href="/pricing" className="transition-colors hover:text-foreground">
-            Pricing
-          </Link>
-          <Link href="/blog" className="transition-colors hover:text-foreground">
-            Blog
-          </Link>
-          <Link href="/changelog" className="transition-colors hover:text-foreground">
-            Changelog
-          </Link>
+        <nav className="hidden items-center gap-7 text-sm font-medium text-muted-foreground md:flex">
+          <a href="#demos" className="transition-colors hover:text-foreground">
+            Demos
+          </a>
+          <a href="#sintomas" className="transition-colors hover:text-foreground">
+            ¿Por qué un sistema?
+          </a>
+          <a href="#beneficios" className="transition-colors hover:text-foreground">
+            Beneficios
+          </a>
+          <a href="#nosotros" className="transition-colors hover:text-foreground">
+            Quiénes Somos
+          </a>
+          <a href="#contacto" className="transition-colors hover:text-foreground">
+            Contacto
+          </a>
         </nav>
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-3">
           <ThemeToggle />
-          <Button variant="outline" size="sm" asChild>
-            <a href={siteConfig.github} rel="noopener" target="_blank">
-              <StarIcon />
-              Star on GitHub
+          <Button size="sm" className="rounded-full bg-[#577590] hover:bg-[#435b71] text-white shadow-sm" asChild>
+            <a href="#contacto">
+              <SendIcon className="size-3.5 mr-1" />
+              Escribinos
             </a>
           </Button>
         </div>

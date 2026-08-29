@@ -3,11 +3,14 @@
 import { motion } from "motion/react";
 import {
   BarChart3Icon,
-  CreditCardIcon,
+  BoxesIcon,
+  CheckCircle2Icon,
   LayoutDashboardIcon,
-  SettingsIcon,
+  ReceiptIcon,
+  SparklesIcon,
   TrendingUpIcon,
   UsersIcon,
+  WorkflowIcon,
 } from "lucide-react";
 
 import { BorderBeam } from "@/components/velora/border-beam";
@@ -16,48 +19,48 @@ import { NumberTicker } from "@/components/velora/number-ticker";
 import { cn } from "@/lib/utils";
 
 const navItems = [
-  { icon: LayoutDashboardIcon, label: "Overview", active: true },
-  { icon: BarChart3Icon, label: "Analytics" },
-  { icon: UsersIcon, label: "Customers" },
-  { icon: CreditCardIcon, label: "Billing" },
-  { icon: SettingsIcon, label: "Settings" },
+  { icon: LayoutDashboardIcon, label: "Panel Central", active: true },
+  { icon: BoxesIcon, label: "Stock & Compras" },
+  { icon: ReceiptIcon, label: "Facturación" },
+  { icon: WorkflowIcon, label: "Automatizaciones" },
+  { icon: UsersIcon, label: "Clientes" },
 ];
 
 const stats = [
-  { label: "Revenue", value: 48291, prefix: "$", change: "+12.4%" },
-  { label: "Active users", value: 12480, prefix: "", change: "+8.1%" },
-  { label: "Conversion", value: 4.6, prefix: "", change: "+0.9%", decimals: 1, suffix: "%" },
+  { label: "Operaciones Centralizadas", value: 1420, prefix: "", change: "100% en tiempo real" },
+  { label: "Tareas Manuales Reemplazadas", value: 86, suffix: "/mes", change: "automatizado" },
+  { label: "Tiempo de Respuesta", value: 3.5, prefix: "", suffix: "x", decimals: 1, change: "más ágil" },
 ];
 
-const bars = [38, 62, 48, 74, 56, 88, 66, 92, 60, 78, 84, 98];
+const bars = [32, 54, 45, 68, 58, 82, 70, 94, 62, 85, 90, 98];
 
-/**
- * Fake analytics dashboard inside a browser frame — pure markup,
- * no images. Gives the hero a product to look at.
- */
 export function HeroMockup({ className }: { className?: string }) {
   return (
     <div className={cn("relative mx-auto w-full max-w-5xl", className)}>
-      {/* Glow */}
+      {/* Warm Glow with Spintsoft Palette */}
       <div
         aria-hidden
-        className="absolute -inset-8 rounded-[2rem] bg-gradient-to-r from-brand-from via-brand-via to-brand-to opacity-20 blur-3xl"
+        className="absolute -inset-6 rounded-[2.5rem] bg-gradient-to-r from-[#577590]/25 via-[#f2a541]/25 to-[#f08a4b]/20 opacity-70 blur-3xl"
       />
 
-      <BrowserMockup url="velora.dev/dashboard" className="relative">
-        <BorderBeam size={96} duration={10} />
+      <BrowserMockup url="app.spintsoft.com/dashboard" className="relative shadow-2xl border-border/80 bg-card">
+        <BorderBeam size={110} duration={9} />
 
         <div className="flex">
           {/* Sidebar */}
-          <aside className="hidden w-44 flex-col gap-1 border-r border-border/60 p-3 md:flex">
+          <aside className="hidden w-48 flex-col gap-1.5 border-r border-border/60 p-3.5 md:flex bg-muted/20">
+            <div className="px-3 py-2 text-xs font-bold tracking-tight text-[#577590] flex items-center gap-1.5">
+              <SparklesIcon className="size-3.5 text-[#f08a4b]" />
+              Spintsoft Core
+            </div>
             {navItems.map((item) => (
               <span
                 key={item.label}
                 className={cn(
-                  "flex items-center gap-2 rounded-lg px-3 py-2 text-xs",
+                  "flex items-center gap-2.5 rounded-xl px-3 py-2 text-xs transition-colors",
                   item.active
-                    ? "bg-primary/10 font-medium text-primary"
-                    : "text-muted-foreground"
+                    ? "bg-[#577590] font-semibold text-white shadow-xs"
+                    : "text-muted-foreground hover:bg-muted/60"
                 )}
               >
                 <item.icon className="size-3.5" />
@@ -66,12 +69,18 @@ export function HeroMockup({ className }: { className?: string }) {
             ))}
           </aside>
 
-          {/* Main */}
+          {/* Main Content */}
           <div className="flex-1 p-4 lg:p-6">
             <div className="mb-4 flex items-center justify-between">
-              <span className="text-sm font-semibold">Overview</span>
-              <span className="rounded-full bg-primary px-3 py-1 text-xs font-medium text-primary-foreground">
-                Last 30 days
+              <div>
+                <span className="text-sm font-bold text-foreground">
+                  Visión General del Sistema
+                </span>
+                <p className="text-[11px] text-muted-foreground">Flujos integrados y procesos activos</p>
+              </div>
+              <span className="rounded-full bg-emerald-500/15 border border-emerald-500/30 px-3 py-1 text-xs font-semibold text-emerald-600 dark:text-emerald-400 flex items-center gap-1">
+                <CheckCircle2Icon className="size-3" />
+                En línea
               </span>
             </div>
 
@@ -80,12 +89,12 @@ export function HeroMockup({ className }: { className?: string }) {
               {stats.map((stat) => (
                 <div
                   key={stat.label}
-                  className="rounded-xl border border-border/60 bg-background/40 p-3 lg:p-4"
+                  className="rounded-xl border border-border/70 bg-card/90 p-3 lg:p-4 shadow-xs"
                 >
-                  <p className="text-[11px] text-muted-foreground">
+                  <p className="text-[11px] font-medium text-muted-foreground">
                     {stat.label}
                   </p>
-                  <p className="mt-1 text-base font-semibold lg:text-xl">
+                  <p className="mt-1 text-base font-bold text-foreground lg:text-xl">
                     <NumberTicker
                       value={stat.value}
                       prefix={stat.prefix}
@@ -93,7 +102,7 @@ export function HeroMockup({ className }: { className?: string }) {
                       decimalPlaces={stat.decimals ?? 0}
                     />
                   </p>
-                  <span className="mt-1 inline-flex items-center gap-1 text-[11px] text-emerald-500">
+                  <span className="mt-1 inline-flex items-center gap-1 text-[11px] font-medium text-emerald-600">
                     <TrendingUpIcon className="size-3" />
                     {stat.change}
                   </span>
@@ -101,13 +110,20 @@ export function HeroMockup({ className }: { className?: string }) {
               ))}
             </div>
 
-            {/* Bar chart */}
-            <div className="mt-3 rounded-xl border border-border/60 bg-background/40 p-4">
+            {/* Performance activity chart */}
+            <div className="mt-3.5 rounded-xl border border-border/70 bg-card/90 p-4 shadow-xs">
               <div className="mb-3 flex items-center justify-between">
-                <span className="text-xs font-medium">Monthly revenue</span>
-                <span className="text-[11px] text-muted-foreground">2026</span>
+                <div>
+                  <span className="text-xs font-bold text-foreground">
+                    Rendimiento Operativo & Automatización
+                  </span>
+                  <p className="text-[10px] text-muted-foreground">Registros procesados automáticamente</p>
+                </div>
+                <span className="rounded bg-[#f2a541]/10 px-2 py-0.5 text-[10px] font-semibold text-[#f2a541]">
+                  Últimos 12 meses
+                </span>
               </div>
-              <div className="flex h-32 items-end gap-2 lg:h-40">
+              <div className="flex h-28 items-end gap-2 lg:h-36">
                 {bars.map((height, i) => (
                   <motion.div
                     key={i}
@@ -115,12 +131,12 @@ export function HeroMockup({ className }: { className?: string }) {
                     whileInView={{ scaleY: 1 }}
                     viewport={{ once: true }}
                     transition={{
-                      delay: 0.3 + i * 0.05,
+                      delay: 0.2 + i * 0.04,
                       duration: 0.5,
                       ease: [0.21, 0.47, 0.32, 0.98],
                     }}
-                    className="flex-1 origin-bottom rounded-t-sm bg-gradient-to-t from-brand-from to-brand-via"
-                    style={{ height: `${height}%`, opacity: 0.5 + height / 200 }}
+                    className="flex-1 origin-bottom rounded-t-md bg-gradient-to-t from-[#577590] via-[#f2a541] to-[#f08a4b]"
+                    style={{ height: `${height}%`, opacity: 0.65 + height / 250 }}
                   />
                 ))}
               </div>

@@ -1,649 +1,456 @@
+"use client";
+
 import {
-  CheckIcon,
-  GaugeIcon,
-  LayersIcon,
-  MoonIcon,
-  MousePointerClickIcon,
-  PaletteIcon,
+  BoxesIcon,
+  ChartColumn,
+  ClockIcon,
+  Code2Icon,
+  ExternalLinkIcon,
+  FlameIcon,
+  HeartIcon,
+  MailIcon,
+  MapPinIcon,
   RocketIcon,
-  SparklesIcon,
-  StarIcon,
+  TargetIcon,
+  TrendingUpIcon,
+  UsersIcon,
   ZapIcon,
 } from "lucide-react";
+import { SiInstagram } from "react-icons/si";
 
 import { Button } from "@/components/ui/button";
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion";
-import { ActivityList } from "@/components/demo/activity-list";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
-import { HeroMockup } from "@/components/demo/hero-mockup";
-import { IntegrationsBeam } from "@/components/demo/integrations-beam";
+import { DemosCarousel } from "@/components/demo/demos-carousel";
+import { SymptomsAnimatedList } from "@/components/demo/symptoms-animated-list";
+import { TechMarquee } from "@/components/demo/tech-marquee";
+import { ContactForm } from "@/components/template/contact-form";
 import { AnimatedGradientText } from "@/components/velora/animated-gradient-text";
+import { AnimatedTooltip } from "@/components/velora/animated-tooltip";
 import { AuroraBackground } from "@/components/velora/aurora-background";
-import { AvatarCircles } from "@/components/velora/avatar-circles";
-import { BentoCard, BentoGrid } from "@/components/velora/bento-grid";
 import { BlurFade } from "@/components/velora/blur-fade";
 import { BorderBeam } from "@/components/velora/border-beam";
-import { Dock, DockIcon } from "@/components/velora/dock";
-import { DotPattern, GridPattern } from "@/components/velora/grid-pattern";
-import { Marquee } from "@/components/velora/marquee";
-import { Meteors } from "@/components/velora/meteors";
-import { NumberTicker } from "@/components/velora/number-ticker";
-import { OrbitingCircles } from "@/components/velora/orbiting-circles";
+import { GridPattern, DotPattern } from "@/components/velora/grid-pattern";
 import { Particles } from "@/components/velora/particles";
-import { RetroGrid } from "@/components/velora/retro-grid";
 import { ScrollProgress } from "@/components/velora/scroll-progress";
 import { ShimmerButton } from "@/components/velora/shimmer-button";
 import { SpotlightCard } from "@/components/velora/spotlight-card";
 import { TextReveal } from "@/components/velora/text-reveal";
 import { TiltCard } from "@/components/velora/tilt-card";
 import { Typewriter } from "@/components/velora/typewriter";
+import { siteConfig } from "@/lib/site-config";
 
-const logos = [
-  "Acme Corp",
-  "Quantum",
-  "Vertex",
-  "Northwind",
-  "Apex Labs",
-  "Orbital",
-  "Luminary",
-  "Pulsewave",
-];
-
-const stats = [
-  { value: 32, suffix: "+", prefix: "", label: "Animated components" },
-  { value: 100, suffix: "", prefix: "", label: "Lighthouse performance" },
-  { value: 0, suffix: "", prefix: "$", label: "Forever. MIT licensed" },
-  { value: 5, suffix: " min", prefix: "", label: "To your first page" },
-];
-
-const testimonials = [
-  {
-    quote:
-      "I replaced a $199 template with Velora in one evening. The animations are genuinely better — and everything respects reduced motion out of the box.",
-    name: "Maya Chen",
-    role: "Design engineer, Studio K",
-  },
-  {
-    quote: "The bento grid + border beam combo sold our landing page redesign to the whole team in one demo.",
-    name: "Tom Okafor",
-    role: "Frontend lead, Pulsewave",
-  },
-  {
-    quote:
-      "Copy, paste, ship. The components feel like shadcn/ui natives, not bolted-on extras.",
-    name: "Sofia Lindqvist",
-    role: "Indie hacker",
-  },
-  {
-    quote: "Perfect Lighthouse scores with this much motion on screen? I checked twice.",
-    name: "Dan Romero",
-    role: "CTO, Orbital",
-  },
-  {
-    quote:
-      "We shipped our AI product launch page in a day. The aurora hero gets compliments weekly.",
-    name: "Aisha Patel",
-    role: "Founder, Luminary",
-  },
-  {
-    quote: "The first free template that doesn't look free.",
-    name: "Lukas Weber",
-    role: "Product designer",
-  },
-];
-
-const faqs = [
-  {
-    q: "Is Velora UI really free?",
-    a: "Yes — every component and the full landing template are MIT licensed. Use them in personal and commercial projects, no attribution required.",
-  },
-  {
-    q: "How is this different from Magic UI?",
-    a: "Velora ships complete, assembled landing pages — not just isolated components. Every animation respects prefers-reduced-motion, causes zero layout shift, and is tuned for mobile.",
-  },
-  {
-    q: "What's the tech stack?",
-    a: "Next.js 16, React 19, Tailwind CSS 4, shadcn/ui and Motion. Copy components via the CLI or clone the whole template.",
-  },
-  {
-    q: "Will there be more templates?",
-    a: "Yes. The SaaS template is free forever. Additional niches (AI agent, dev tool, mobile app, portfolio) and section variants land in Velora Pro.",
-  },
-];
-
-const freeFeatures = [
-  "32+ animated components",
-  "Complete SaaS landing template",
-  "Dark mode + full accessibility",
-  "MIT license — commercial use OK",
-  "Community support",
-];
-
-const proFeatures = [
-  "5 niche templates (AI, dev tool, mobile…)",
-  "50+ section design variants",
-  "Figma source file",
-  "Waitlist, newsletter & Stripe wiring",
-  "Private registry + lifetime updates",
+const teamMembers = [
+  { name: "Juan Saby", role: "Ingeniería en Sistemas", image: "/resources/juan.jpg" },
+  { name: "Carolina Corazza", role: "Ingeniería en Sistemas", image: "/resources/carolina.jpg" },
+  { name: "Belén Ramello", role: "Ingeniería en Sistemas", image: "/resources/belen.jpg" },
 ];
 
 export default function Home() {
   return (
-    <main className="relative">
+    <main className="relative bg-background text-foreground selection:bg-[#f2a541]/30 selection:text-[#577590]">
       <ScrollProgress />
-
       <SiteHeader />
 
-      {/* Hero */}
-      <section className="relative overflow-hidden pt-40 pb-24 lg:pt-48 lg:pb-28">
+      {/* ── Hero ── */}
+      <section className="relative overflow-hidden pt-36 pb-20 lg:pt-44 lg:pb-28">
         <AuroraBackground intensity="subtle" />
         <GridPattern
-          width={48}
-          height={48}
-          className="fill-transparent stroke-border/60 [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,black,transparent)]"
+          width={44}
+          height={44}
+          className="fill-transparent stroke-border/50 [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,black,transparent)]"
         />
-        <div className="relative mx-auto max-w-6xl px-4 text-center lg:px-8">
-          <BlurFade delay={0} direction="down">
-            <span className="inline-flex items-center gap-2 rounded-full border border-border/60 bg-card/60 px-4 py-1.5 text-sm backdrop-blur">
-              <SparklesIcon className="size-3.5 text-primary" />
-              <span className="font-medium">
-                Introducing Velora UI — free forever
-              </span>
-            </span>
-          </BlurFade>
 
-          <h1 className="mx-auto mt-8 max-w-4xl text-5xl font-semibold tracking-tight text-balance lg:text-7xl">
-            <TextReveal text="Landing pages that feel" />{" "}
+        <div className="relative mx-auto max-w-6xl px-4 text-center lg:px-8">
+          <h1 className="mx-auto mt-7 max-w-4xl text-4xl font-extrabold tracking-tight text-balance sm:text-5xl lg:text-6xl text-foreground">
+            <TextReveal text="Transformamos tus " />{" "}
             <AnimatedGradientText>
-              <Typewriter words={["alive.", "effortless.", "unforgettable."]} />
+              <span className="inline-flex min-w-[280px] sm:min-w-[340px] justify-center text-[#f08a4b]">
+                <Typewriter
+                  words={[
+                    "ideas de negocio",
+                    "procesos manuales",
+                    "tareas repetitivas",
+                    "cuellos de botella",
+                  ]}
+                />
+              </span>
             </AnimatedGradientText>
+            <TextReveal text=" en software a medida." />
           </h1>
 
-          <BlurFade delay={0.35}>
-            <p className="mx-auto mt-6 max-w-2xl text-lg text-muted-foreground text-pretty">
-              Free, open-source animated components and complete landing
-              templates for React. Built on Next.js 16, Tailwind CSS 4 and
-              shadcn/ui — accessible, reduced-motion friendly and tuned for
-              perfect Lighthouse scores.
+          <BlurFade delay={0.25}>
+            <p className="mx-auto mt-6 max-w-2xl text-base sm:text-lg text-muted-foreground text-pretty leading-relaxed">
+              Diseñamos sistemas de información personalizados para empresas y organizaciones que buscan centralizar su gestión, eliminar tareas mecánicas y operar con tecnología de vanguardia.
             </p>
           </BlurFade>
 
-          <BlurFade delay={0.5}>
-            <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
-              <ShimmerButton>
-                <RocketIcon className="size-4" />
-                Get started — it&apos;s free
+          <BlurFade delay={0.4}>
+            <div className="mt-9 flex flex-wrap items-center justify-center gap-4">
+              <ShimmerButton
+                className="bg-[#577590] text-white shadow-md text-sm font-semibold"
+                onClick={() => {
+                  document.getElementById("contacto")?.scrollIntoView({ behavior: "smooth" });
+                }}
+              >
+                <RocketIcon className="size-4 mr-1.5" />
+                Hablemos de tu proyecto
               </ShimmerButton>
-              <Button variant="ghost" size="lg" asChild>
-                <a href="#features">Browse components</a>
+              <Button
+                variant="outline"
+                size="lg"
+                className="rounded-full border-border/80 bg-card text-foreground hover:bg-muted font-medium text-sm shadow-xs"
+                asChild
+              >
+                <a href="#demos">
+                  <BoxesIcon className="size-4 mr-1.5 text-[#577590]" />
+                  Ver Demos de Sistemas
+                </a>
               </Button>
             </div>
           </BlurFade>
+        </div>
+      </section>
 
-          <BlurFade delay={0.6}>
-            <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
-              <AvatarCircles
-                people={[
-                  "Maya Chen",
-                  "Tom Okafor",
-                  "Sofia Lindqvist",
-                  "Dan Romero",
-                  "Aisha Patel",
-                ]}
-                extra={2400}
-              />
-              <div className="flex flex-col items-center gap-0.5 sm:items-start">
-                <span className="flex gap-0.5 text-amber-400">
-                  {Array.from({ length: 5 }).map((_, i) => (
-                    <StarIcon key={i} className="size-4 fill-current" />
-                  ))}
-                </span>
-                <span className="text-sm text-muted-foreground">
-                  Loved by 2,400+ builders
-                </span>
-              </div>
+      {/* ── Demos ── */}
+      <section id="demos" className="relative py-20 lg:py-28 border-t border-border/40">
+        <DotPattern className="[mask-image:radial-gradient(ellipse_at_center,black,transparent_75%)] opacity-30" />
+        <div className="relative mx-auto max-w-6xl px-4 lg:px-8">
+          <BlurFade>
+            <div className="text-center">
+              <span className="inline-flex items-center gap-1.5 rounded-full bg-[#f2a541]/15 border border-[#f2a541]/30 px-3.5 py-1 text-xs font-semibold text-[#f2a541]">
+                <BoxesIcon className="size-3.5" />
+                Demostraciones Interactivas
+              </span>
+              <h2 className="mt-3 text-3xl font-extrabold tracking-tight text-foreground sm:text-4xl lg:text-5xl">
+                Mirá lo que podemos <span className="text-[#577590]">construir para vos</span>
+              </h2>
+              <p className="mx-auto mt-4 max-w-2xl text-sm sm:text-base text-muted-foreground leading-relaxed">
+                No partimos desde cero: explorá nuestras demos funcionales de sistemas de gestión, flujos automatizados, portales y dashboards para entender cómo podemos resolver tus desafíos.
+              </p>
             </div>
           </BlurFade>
 
-          {/* Product mockup */}
-          <BlurFade delay={0.75} offset={32}>
-            <HeroMockup className="mt-20" />
-          </BlurFade>
-
-          {/* Stats */}
-          <div className="mx-auto mt-20 grid max-w-4xl grid-cols-2 gap-8 lg:grid-cols-4">
-            {stats.map((stat, i) => (
-              <BlurFade key={stat.label} delay={i * 0.1}>
-                <div className="flex flex-col items-center gap-1">
-                  <span className="text-4xl font-semibold tracking-tight">
-                    <NumberTicker
-                      value={stat.value}
-                      prefix={stat.prefix}
-                      suffix={stat.suffix}
-                    />
-                  </span>
-                  <span className="text-sm text-muted-foreground">
-                    {stat.label}
-                  </span>
-                </div>
-              </BlurFade>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Logo marquee */}
-      <section className="border-y border-border/40 py-12">
-        <div className="mx-auto max-w-6xl px-4 lg:px-8">
-          <p className="mb-8 text-center text-sm text-muted-foreground">
-            Trusted by teams shipping with modern React
-          </p>
-          <Marquee pauseOnHover className="[--duration:30s]">
-            {logos.map((logo) => (
-              <span
-                key={logo}
-                className="mx-8 text-xl font-semibold tracking-tight text-muted-foreground/60 transition-colors hover:text-foreground"
-              >
-                {logo}
-              </span>
-            ))}
-          </Marquee>
-        </div>
-      </section>
-
-      {/* Bento features */}
-      <section id="features" className="relative py-24 lg:py-32">
-        <div className="mx-auto max-w-6xl px-4 lg:px-8">
-          <BlurFade>
-            <h2 className="mx-auto max-w-2xl text-center text-3xl font-semibold tracking-tight text-balance lg:text-5xl">
-              Everything you need to{" "}
-              <span className="text-primary">ship beautiful</span>
-            </h2>
-            <p className="mx-auto mt-4 max-w-xl text-center text-muted-foreground">
-              Assembled sections, not puzzle pieces. Every block below is built
-              from Velora primitives you can copy into your own project.
-            </p>
-          </BlurFade>
-
-          <BlurFade delay={0.15}>
-            <BentoGrid className="mt-16">
-              <BentoCard
-                name="Orbiting integrations"
-                description="Showcase your ecosystem with multi-ring orbit animations."
-                className="md:col-span-1"
-                background={
-                  <div className="relative flex size-full items-center justify-center pb-20">
-                    <ZapIcon className="size-8 text-primary" />
-                    <OrbitingCircles radius={90} iconSize={28} duration={24}>
-                      <LayersIcon className="size-5 text-muted-foreground" />
-                      <PaletteIcon className="size-5 text-muted-foreground" />
-                      <GaugeIcon className="size-5 text-muted-foreground" />
-                    </OrbitingCircles>
-                  </div>
-                }
-              />
-              <BentoCard
-                name="Animated borders"
-                description="Draw the eye with beams that travel around any card or CTA."
-                className="md:col-span-2"
-                background={
-                  <div className="absolute inset-6 rounded-xl border bg-card/50">
-                    <BorderBeam size={72} duration={7} />
-                    <div className="flex h-full items-center justify-center text-sm text-muted-foreground">
-                      &lt;BorderBeam /&gt;
-                    </div>
-                  </div>
-                }
-              />
-              <BentoCard
-                name="Scrolling testimonials"
-                description="Vertical marquees with hover-pause for social proof walls."
-                className="md:col-span-2"
-                background={
-                  <div className="absolute inset-x-10 top-4 bottom-24">
-                    <Marquee
-                      vertical
-                      pauseOnHover
-                      className="h-full [--duration:24s]"
-                    >
-                      {[
-                        "“Shipped our launch page in an afternoon.”",
-                        "“The animations are buttery smooth.”",
-                        "“Finally, free components that feel premium.”",
-                        "“Lighthouse 100 out of the box.”",
-                      ].map((quote) => (
-                        <div
-                          key={quote}
-                          className="rounded-xl border bg-card/80 p-4 text-sm text-muted-foreground"
-                        >
-                          {quote}
-                        </div>
-                      ))}
-                    </Marquee>
-                  </div>
-                }
-              />
-              <BentoCard
-                name="Falling meteors"
-                description="Subtle streaks that bring dark sections to life."
-                className="md:col-span-1"
-                background={
-                  <div className="absolute inset-0">
-                    <DotPattern className="[mask-image:radial-gradient(ellipse_at_center,black,transparent_75%)]" />
-                    <Meteors number={10} />
-                  </div>
-                }
-              />
-            </BentoGrid>
+          <BlurFade delay={0.15} className="mt-12">
+            <DemosCarousel />
           </BlurFade>
         </div>
       </section>
 
-      {/* Integrations beam */}
-      <section className="relative py-24 lg:py-32">
-        <div className="mx-auto grid max-w-6xl items-center gap-12 px-4 lg:grid-cols-2 lg:gap-20 lg:px-8">
+      {/* ── Síntomas / Por qué un sistema ── */}
+      <section id="sintomas" className="relative py-20 lg:py-28 border-t border-border/40 overflow-hidden">
+        <div className="mx-auto grid max-w-6xl items-center gap-12 px-4 lg:grid-cols-2 lg:gap-16 lg:px-8">
           <BlurFade direction="right">
-            <div>
-              <span className="text-sm font-medium text-primary">
-                Animated beams
-              </span>
-              <h2 className="mt-3 text-3xl font-semibold tracking-tight text-balance lg:text-4xl">
-                Connect anything to{" "}
-                <span className="text-primary">everything</span>
-              </h2>
-              <p className="mt-4 text-muted-foreground">
-                The classic integrations diagram, rebuilt as a single component.
-                Point a beam at any two elements and it draws, curves and
-                animates itself — responsive and resize-aware.
-              </p>
-              <ul className="mt-6 space-y-3 text-sm">
-                {[
-                  "Auto-measured paths between any two refs",
-                  "Curvature, direction, speed and color per beam",
-                  "Resize-aware — no manual coordinates",
-                ].map((item) => (
-                  <li key={item} className="flex items-center gap-3">
-                    <span className="flex size-5 items-center justify-center rounded-full bg-primary/15 text-primary">
-                      <CheckIcon className="size-3" />
-                    </span>
-                    {item}
-                  </li>
-                ))}
-              </ul>
-            </div>
+            <SymptomsAnimatedList />
           </BlurFade>
+
           <BlurFade direction="left" delay={0.15}>
-            <IntegrationsBeam />
-          </BlurFade>
-        </div>
-      </section>
-
-      {/* Live activity */}
-      <section className="relative overflow-hidden py-24 lg:py-32">
-        <RetroGrid />
-        <div className="relative mx-auto grid max-w-6xl items-center gap-12 px-4 lg:grid-cols-2 lg:gap-20 lg:px-8">
-          <BlurFade direction="right" className="order-2 lg:order-1">
-            <ActivityList />
-          </BlurFade>
-          <BlurFade direction="left" delay={0.15} className="order-1 lg:order-2">
-            <div>
-              <span className="text-sm font-medium text-primary">
-                Animated lists
+            <div className="space-y-6">
+              <span className="inline-flex items-center gap-1.5 rounded-full bg-[#f08a4b]/15 border border-[#f08a4b]/30 px-3.5 py-1 text-xs font-semibold text-[#f08a4b]">
+                <ClockIcon className="size-3.5" />
+                Diagnóstico Organizacional
               </span>
-              <h2 className="mt-3 text-3xl font-semibold tracking-tight text-balance lg:text-4xl">
-                Show your product{" "}
-                <span className="text-primary">doing things</span>
+              <h2 className="text-3xl font-extrabold tracking-tight text-foreground sm:text-4xl leading-tight">
+                ¿Tu negocio creció, pero tus herramientas <span className="text-[#f08a4b]">quedaron atrás?</span>
               </h2>
-              <p className="mt-4 text-muted-foreground">
-                Notifications, sales, deploys — a looping feed that springs each
-                item in and gracefully pushes the rest down. Perfect for hero
-                mockups and feature sections that need life.
+              <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">
+                Es común comenzar con planillas y chats, pero con el crecimiento la carga manual genera cuellos de botella y desorden. Un sistema a medida transforma esa realidad.
               </p>
-              <p className="mt-4 text-muted-foreground">
-                Behind it: the retro grid backdrop, scrolling forever toward the
-                horizon.
-              </p>
-            </div>
-          </BlurFade>
-        </div>
-      </section>
-
-      {/* Spotlight cards */}
-      <section className="relative py-24 lg:py-32">
-        <div className="mx-auto max-w-6xl px-4 lg:px-8">
-          <div className="grid gap-6 md:grid-cols-3">
-            {[
-              {
-                icon: <GaugeIcon className="size-6" />,
-                title: "Performance first",
-                body: "CSS-driven animations wherever possible, Motion only where it earns its bytes. No layout shift, ever.",
-              },
-              {
-                icon: <MousePointerClickIcon className="size-6" />,
-                title: "Accessible by default",
-                body: "Every component respects prefers-reduced-motion, keeps keyboard focus visible and ships semantic markup.",
-              },
-              {
-                icon: <MoonIcon className="size-6" />,
-                title: "Dark mode native",
-                body: "Designed dark-first with oklch color tokens. Flip one class and every gradient adapts.",
-              },
-            ].map((card, i) => (
-              <BlurFade key={card.title} delay={i * 0.12}>
-                <SpotlightCard className="h-full p-8">
-                  <div className="mb-4 w-fit rounded-xl bg-primary/10 p-3 text-primary">
-                    {card.icon}
-                  </div>
-                  <h3 className="text-lg font-semibold">{card.title}</h3>
-                  <p className="mt-2 text-sm text-muted-foreground">
-                    {card.body}
-                  </p>
-                </SpotlightCard>
-              </BlurFade>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Testimonials */}
-      <section className="relative py-24 lg:py-32">
-        <div className="mx-auto max-w-6xl px-4 lg:px-8">
-          <BlurFade>
-            <h2 className="mx-auto max-w-2xl text-center text-3xl font-semibold tracking-tight text-balance lg:text-5xl">
-              Builders <span className="text-primary">love it</span>
-            </h2>
-            <p className="mx-auto mt-4 max-w-xl text-center text-muted-foreground">
-              Hover the cards — they tilt in 3D. Another Velora primitive.
-            </p>
-          </BlurFade>
-          <div className="mt-16 columns-1 gap-6 md:columns-2 lg:columns-3 [&>*]:mb-6">
-            {testimonials.map((t, i) => (
-              <BlurFade key={t.name} delay={(i % 3) * 0.1} className="break-inside-avoid">
-                <TiltCard>
-                  <figure className="rounded-2xl border bg-card p-6">
-                    <span className="flex gap-0.5 text-amber-400">
-                      {Array.from({ length: 5 }).map((_, s) => (
-                        <StarIcon key={s} className="size-3.5 fill-current" />
-                      ))}
-                    </span>
-                    <blockquote className="mt-4 text-sm text-card-foreground">
-                      “{t.quote}”
-                    </blockquote>
-                    <figcaption className="mt-4 flex items-center gap-3">
-                      <AvatarCircles people={[t.name]} className="[&>span]:size-8 [&>span]:text-[10px]" />
-                      <div>
-                        <p className="text-sm font-medium">{t.name}</p>
-                        <p className="text-xs text-muted-foreground">{t.role}</p>
-                      </div>
-                    </figcaption>
-                  </figure>
-                </TiltCard>
-              </BlurFade>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Pricing */}
-      <section id="pricing" className="relative py-24 lg:py-32">
-        <div className="mx-auto max-w-6xl px-4 lg:px-8">
-          <BlurFade>
-            <h2 className="mx-auto max-w-2xl text-center text-3xl font-semibold tracking-tight text-balance lg:text-5xl">
-              Free forever. <span className="text-primary">Pro later.</span>
-            </h2>
-            <p className="mx-auto mt-4 max-w-xl text-center text-muted-foreground">
-              Everything on this page is free. Pro adds breadth — more niches,
-              more variants, more shortcuts.
-            </p>
-          </BlurFade>
-
-          <div className="mx-auto mt-16 grid max-w-4xl gap-6 md:grid-cols-2">
-            <BlurFade>
-              <div className="flex h-full flex-col rounded-2xl border bg-card p-8">
-                <h3 className="text-lg font-semibold">Free</h3>
-                <p className="mt-2 text-sm text-muted-foreground">
-                  Everything you see in this showcase.
-                </p>
-                <p className="mt-6 text-5xl font-semibold tracking-tight">
-                  $0
-                  <span className="text-base font-normal text-muted-foreground">
-                    {" "}
-                    forever
-                  </span>
-                </p>
-                <ul className="mt-8 flex-1 space-y-3 text-sm">
-                  {freeFeatures.map((f) => (
-                    <li key={f} className="flex items-center gap-3">
-                      <span className="flex size-5 items-center justify-center rounded-full bg-primary/15 text-primary">
-                        <CheckIcon className="size-3" />
-                      </span>
-                      {f}
-                    </li>
-                  ))}
-                </ul>
-                <Button variant="outline" size="lg" className="mt-8 w-full rounded-full">
-                  Get started
+              <div className="pt-2">
+                <Button className="rounded-full bg-[#577590] hover:bg-[#435b71] text-white text-xs font-semibold shadow-sm transition-transform active:scale-95" asChild>
+                  <a href="#contacto">Contanos tu caso y coordinemos una charla</a>
                 </Button>
               </div>
+            </div>
+          </BlurFade>
+        </div>
+      </section>
+
+      {/* ── Beneficios / Impacto Real ── */}
+      <section id="beneficios" className="relative py-20 lg:py-28 border-t border-border/40">
+        <div className="mx-auto max-w-6xl px-4 lg:px-8">
+          <BlurFade>
+            <div className="text-center">
+              <span className="inline-flex items-center gap-1.5 rounded-full bg-[#577590]/15 border border-[#577590]/30 px-3.5 py-1 text-xs font-semibold text-[#577590]">
+                <TrendingUpIcon className="size-3.5" />
+                Impacto Real en tu Empresa
+              </span>
+              <h2 className="mt-3 text-3xl font-extrabold tracking-tight text-foreground sm:text-4xl lg:text-5xl max-w-3xl mx-auto leading-tight">
+                Menos tareas manuales. Más control.{" "}
+                <span className="text-[#577590]">Más tiempo para hacer crecer tu negocio.</span>
+              </h2>
+            </div>
+          </BlurFade>
+
+          <div className="mt-14 grid gap-5 md:grid-cols-2">
+            {/* Card 1 */}
+            <BlurFade delay={0.1}>
+              <SpotlightCard className="border-border/70 bg-card p-0 shadow-sm overflow-hidden transition-all duration-300 hover:border-[#f08a4b]/50">
+                <div className="flex flex-row min-h-[160px]">
+                  <div className="w-1/3 shrink-0 relative overflow-hidden bg-muted border-r border-border/40">
+                    <img
+                      src="/resources/automatizacion.jpg"
+                      alt="Automatización de tareas"
+                      className="absolute inset-0 size-full object-cover object-center"
+                    />
+                  </div>
+                  <div className="flex-1 p-5 sm:p-6 flex flex-col justify-center">
+                    <div className="flex size-9 items-center justify-center rounded-xl bg-[#f08a4b]/15 text-[#f08a4b] mb-2.5">
+                      <ZapIcon className="size-4.5" />
+                    </div>
+                    <h3 className="text-base sm:text-lg font-bold text-foreground leading-snug">
+                      Automatizá lo repetitivo
+                    </h3>
+                    <p className="mt-1.5 text-xs text-muted-foreground leading-relaxed">
+                      Dejá que el sistema haga las tareas que hoy hace tu equipo.
+                    </p>
+                  </div>
+                </div>
+              </SpotlightCard>
             </BlurFade>
 
-            <BlurFade delay={0.12}>
-              <div className="relative flex h-full flex-col overflow-hidden rounded-2xl border bg-card p-8">
-                <BorderBeam size={80} duration={8} />
-                <div className="flex items-center justify-between">
-                  <h3 className="text-lg font-semibold text-primary">Pro</h3>
-                  <span className="rounded-full bg-primary/15 px-3 py-1 text-xs font-medium text-primary">
-                    Coming soon
-                  </span>
+            {/* Card 2 */}
+            <BlurFade delay={0.2}>
+              <SpotlightCard className="border-border/70 bg-card p-0 shadow-sm overflow-hidden transition-all duration-300 hover:border-[#577590]/50">
+                <div className="flex flex-row min-h-[160px]">
+                  <div className="w-1/3 shrink-0 relative overflow-hidden bg-muted border-r border-border/40">
+                    <img
+                      src="/resources/centralizacion.jpg"
+                      alt="Información centralizada"
+                      className="absolute inset-0 size-full object-cover object-center"
+                    />
+                  </div>
+                  <div className="flex-1 p-5 sm:p-6 flex flex-col justify-center">
+                    <div className="flex size-9 items-center justify-center rounded-xl bg-[#577590]/15 text-[#577590] mb-2.5">
+                      <ChartColumn className="size-4.5" />
+                    </div>
+                    <h3 className="text-base sm:text-lg font-bold text-foreground leading-snug">
+                      Toda la información en un solo lugar
+                    </h3>
+                    <p className="mt-1.5 text-xs text-muted-foreground leading-relaxed">
+                      Datos centralizados, actualizados y disponibles cuando los necesitás.
+                    </p>
+                  </div>
                 </div>
-                <p className="mt-2 text-sm text-muted-foreground">
-                  For teams shipping more than one page.
-                </p>
-                <p className="mt-6 text-5xl font-semibold tracking-tight">
-                  $99
-                  <span className="text-base font-normal text-muted-foreground">
-                    {" "}
-                    lifetime
-                  </span>
-                </p>
-                <ul className="mt-8 flex-1 space-y-3 text-sm">
-                  {proFeatures.map((f) => (
-                    <li key={f} className="flex items-center gap-3">
-                      <span className="flex size-5 items-center justify-center rounded-full bg-primary/15 text-primary">
-                        <CheckIcon className="size-3" />
-                      </span>
-                      {f}
-                    </li>
-                  ))}
-                </ul>
-                <ShimmerButton className="mt-8 w-full">
-                  Join the waitlist
-                </ShimmerButton>
-              </div>
+              </SpotlightCard>
+            </BlurFade>
+
+            {/* Card 3 */}
+            <BlurFade delay={0.3}>
+              <SpotlightCard className="border-border/70 bg-card p-0 shadow-sm overflow-hidden transition-all duration-300 hover:border-[#f2a541]/50">
+                <div className="flex flex-row min-h-[160px]">
+                  <div className="w-1/3 shrink-0 relative overflow-hidden bg-muted border-r border-border/40">
+                    <img
+                      src="/resources/decisiones.jpg"
+                      alt="Toma de decisiones con datos"
+                      className="absolute inset-0 size-full object-cover object-center"
+                    />
+                  </div>
+                  <div className="flex-1 p-5 sm:p-6 flex flex-col justify-center">
+                    <div className="flex size-9 items-center justify-center rounded-xl bg-[#f2a541]/15 text-[#f2a541] mb-2.5">
+                      <TargetIcon className="size-4.5" />
+                    </div>
+                    <h3 className="text-base sm:text-lg font-bold text-foreground leading-snug">
+                      Tomá mejores decisiones
+                    </h3>
+                    <p className="mt-1.5 text-xs text-muted-foreground leading-relaxed">
+                      Convertí tus datos en información clara para decidir con confianza.
+                    </p>
+                  </div>
+                </div>
+              </SpotlightCard>
+            </BlurFade>
+
+            {/* Card 4 */}
+            <BlurFade delay={0.4}>
+              <SpotlightCard className="border-border/70 bg-card p-0 shadow-sm overflow-hidden transition-all duration-300 hover:border-[#d78a76]/50">
+                <div className="flex flex-row min-h-[160px]">
+                  <div className="w-1/3 shrink-0 relative overflow-hidden bg-muted border-r border-border/40">
+                    <img
+                      src="/resources/escalabilidad.jpg"
+                      alt="Sistema que crece con vos"
+                      className="absolute inset-0 size-full object-cover object-center"
+                    />
+                  </div>
+                  <div className="flex-1 p-5 sm:p-6 flex flex-col justify-center">
+                    <div className="flex size-9 items-center justify-center rounded-xl bg-[#d78a76]/15 text-[#d78a76] mb-2.5">
+                      <RocketIcon className="size-4.5" />
+                    </div>
+                    <h3 className="text-base sm:text-lg font-bold text-foreground leading-snug">
+                      Un sistema que crece con vos
+                    </h3>
+                    <p className="mt-1.5 text-xs text-muted-foreground leading-relaxed">
+                      Empezá con lo que necesitás hoy y agregá nuevas funcionalidades cuando tu negocio lo requiera.
+                    </p>
+                  </div>
+                </div>
+              </SpotlightCard>
             </BlurFade>
           </div>
         </div>
       </section>
 
-      {/* FAQ */}
-      <section id="faq" className="py-24 lg:py-32">
-        <div className="mx-auto max-w-3xl px-4 lg:px-8">
+      {/* ── Quiénes Somos ── */}
+      <section id="nosotros" className="relative py-20 lg:py-28 border-t border-border/40">
+        <div className="mx-auto max-w-6xl px-4 lg:px-8">
           <BlurFade>
-            <h2 className="text-center text-3xl font-semibold tracking-tight lg:text-4xl">
-              Frequently asked questions
-            </h2>
+            <div className="text-center">
+              <span className="inline-flex items-center gap-1.5 rounded-full bg-[#f2a541]/15 border border-[#f2a541]/30 px-3.5 py-1 text-xs font-semibold text-[#f2a541]">
+                <UsersIcon className="size-3.5" />
+                Equipo de Desarrollo
+              </span>
+              <h2 className="mt-3 text-3xl font-extrabold tracking-tight text-foreground sm:text-4xl lg:text-5xl">
+                Quiénes <span className="text-[#577590]">Somos</span>
+              </h2>
+              <p className="mx-auto mt-4 max-w-2xl text-sm sm:text-base text-muted-foreground leading-relaxed">
+                Somos un equipo de estudiantes de Ingeniería en Sistemas con ganas de crear software que realmente haga la diferencia.
+              </p>
+
+              <div className="mt-6 flex flex-wrap items-center justify-center gap-4">
+                <div className="inline-flex items-center gap-3.5 rounded-full border border-border/80 bg-card px-5 py-2.5 shadow-sm">
+                  <AnimatedTooltip items={teamMembers} />
+                  <div className="text-left text-xs">
+                    <p className="font-bold text-foreground">Juan, Carolina y Belén</p>
+                    <p className="text-[11px] text-muted-foreground flex items-center gap-1">
+                      <MapPinIcon className="size-3 text-[#f08a4b]" />
+                      Villa María, Córdoba
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
           </BlurFade>
-          <BlurFade delay={0.15}>
-            <Accordion type="single" collapsible className="mt-12">
-              {faqs.map((faq) => (
-                <AccordionItem key={faq.q} value={faq.q}>
-                  <AccordionTrigger className="text-left text-base">
-                    {faq.q}
-                  </AccordionTrigger>
-                  <AccordionContent className="text-muted-foreground">
-                    {faq.a}
-                  </AccordionContent>
-                </AccordionItem>
-              ))}
-            </Accordion>
-          </BlurFade>
+
+          {/* 3 cards con TiltCard + BorderBeam */}
+          <div className="mt-12 grid gap-6 md:grid-cols-3">
+            <BlurFade delay={0.1}>
+              <TiltCard className="h-full">
+                <div className="relative group rounded-3xl p-0.5 overflow-hidden h-full">
+                  <BorderBeam size={80} duration={6} className="from-[#577590] via-[#f2a541] to-[#f08a4b]" />
+                  <SpotlightCard className="h-full p-7 md:p-8 border-border/80 bg-card shadow-sm">
+                    <div>
+                      <div className="mb-4 flex size-12 items-center justify-center rounded-2xl bg-[#577590]/15 text-[#577590] transition-transform duration-300 group-hover:scale-110">
+                        <Code2Icon className="size-6" />
+                      </div>
+                      <h3 className="text-lg font-bold text-foreground">Desarrollamos a medida</h3>
+                      <p className="mt-2.5 text-xs sm:text-sm text-muted-foreground leading-relaxed">
+                        Construimos soluciones pensadas para la forma en que trabaja cada negocio.
+                      </p>
+                    </div>
+                  </SpotlightCard>
+                </div>
+              </TiltCard>
+            </BlurFade>
+
+            <BlurFade delay={0.2}>
+              <TiltCard className="h-full">
+                <div className="relative group rounded-3xl p-0.5 overflow-hidden h-full">
+                  <BorderBeam size={80} duration={6} className="from-[#f08a4b] via-[#d78a76] to-[#f2a541]" />
+                  <SpotlightCard className="h-full p-7 md:p-8 border-border/80 bg-card shadow-sm">
+                    <div>
+                      <div className="mb-4 flex size-12 items-center justify-center rounded-2xl bg-[#f08a4b]/15 text-[#f08a4b] transition-transform duration-300 group-hover:scale-110">
+                        <HeartIcon className="size-6" />
+                      </div>
+                      <h3 className="text-lg font-bold text-foreground">Trabajamos directamente con vos</h3>
+                      <p className="mt-2.5 text-xs sm:text-sm text-muted-foreground leading-relaxed">
+                        Hablás con quienes diseñan y desarrollan tu sistema. Sin intermediarios.
+                      </p>
+                    </div>
+                  </SpotlightCard>
+                </div>
+              </TiltCard>
+            </BlurFade>
+
+            <BlurFade delay={0.3}>
+              <TiltCard className="h-full">
+                <div className="relative group rounded-3xl p-0.5 overflow-hidden h-full">
+                  <BorderBeam size={80} duration={6} className="from-[#f2a541] via-[#577590] to-[#f08a4b]" />
+                  <SpotlightCard className="h-full p-7 md:p-8 border-border/80 bg-card shadow-sm">
+                    <div>
+                      <div className="mb-4 flex size-12 items-center justify-center rounded-2xl bg-[#f2a541]/15 text-[#f2a541] transition-transform duration-300 group-hover:scale-110">
+                        <RocketIcon className="size-6" />
+                      </div>
+                      <h3 className="text-lg font-bold text-foreground">Tenemos ganas de construir</h3>
+                      <p className="mt-2.5 text-xs sm:text-sm text-muted-foreground leading-relaxed">
+                        Nos involucramos en cada proyecto y buscamos crear soluciones que puedan crecer con tu negocio.
+                      </p>
+                    </div>
+                  </SpotlightCard>
+                </div>
+              </TiltCard>
+            </BlurFade>
+          </div>
+
+          {/* Marquee de Tecnologías — directo sobre el fondo */}
+          <div className="mt-16 text-center">
+            <p className="text-xs font-bold uppercase tracking-wider text-muted-foreground mb-4">
+              Stack tecnológico y herramientas que dominamos
+            </p>
+            <TechMarquee />
+          </div>
         </div>
       </section>
 
-      {/* CTA */}
-      <section className="relative overflow-hidden py-24 lg:py-32">
-        <AuroraBackground intensity="subtle" />
-        <Particles quantity={50} />
-        <div className="relative mx-auto max-w-4xl px-4 text-center lg:px-8">
-          <BlurFade>
-            <h2 className="text-4xl font-semibold tracking-tight text-balance lg:text-6xl">
-              Stop paying <span className="text-primary">$199</span> for
-              landing pages.
-            </h2>
-            <p className="mx-auto mt-6 max-w-xl text-lg text-muted-foreground">
-              Velora UI gives you the same polish — animated, accessible and
-              production-ready — for free.
-            </p>
-            <div className="mt-10">
-              <ShimmerButton className="h-14 px-10 text-base">
-                <RocketIcon className="size-5" />
-                Start building now
-              </ShimmerButton>
-            </div>
-          </BlurFade>
-          <BlurFade delay={0.2}>
-            <div className="mt-16">
-              <p className="mb-4 text-xs text-muted-foreground">
-                Even the dock is a component — hover it
-              </p>
-              <Dock>
-                <DockIcon label="Components">
-                  <LayersIcon className="size-5" />
-                </DockIcon>
-                <DockIcon label="Themes">
-                  <PaletteIcon className="size-5" />
-                </DockIcon>
-                <DockIcon label="Performance">
-                  <GaugeIcon className="size-5" />
-                </DockIcon>
-                <DockIcon label="Animations">
-                  <ZapIcon className="size-5" />
-                </DockIcon>
-                <DockIcon label="Dark mode">
-                  <MoonIcon className="size-5" />
-                </DockIcon>
-                <DockIcon label="Ship it">
-                  <RocketIcon className="size-5" />
-                </DockIcon>
-              </Dock>
-            </div>
-          </BlurFade>
+      {/* ── Contacto ── */}
+      <section id="contacto" className="relative py-20 lg:py-28 border-t border-border/40 overflow-hidden">
+        <Particles quantity={40} className="opacity-30" />
+        <div className="relative mx-auto max-w-6xl px-4 lg:px-8">
+          <div className="grid gap-10 lg:grid-cols-[1fr_1.3fr] items-start">
+            <BlurFade direction="right">
+              <div className="space-y-6">
+                <span className="inline-flex items-center gap-1.5 rounded-full bg-[#577590]/15 border border-[#577590]/30 px-3.5 py-1 text-xs font-semibold text-[#577590]">
+                  <MailIcon className="size-3.5" />
+                  Contacto Directo
+                </span>
+                <h2 className="text-3xl font-extrabold tracking-tight text-foreground sm:text-4xl">
+                  Hablemos de tu proyecto o idea
+                </h2>
+                <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">
+                  Podés escribirnos a través del formulario o directamente a nuestros canales oficiales de contacto:
+                </p>
+
+                <div className="space-y-3.5 pt-2">
+                  <a
+                    href={`mailto:${siteConfig.email}`}
+                    className="flex items-center justify-between gap-3.5 rounded-2xl border border-border/70 bg-card p-4 shadow-sm transition-all duration-200 hover:border-[#577590] hover:scale-[1.02] group"
+                  >
+                    <div className="flex items-center gap-3.5">
+                      <span className="flex size-11 shrink-0 items-center justify-center rounded-xl bg-[#577590]/15 text-[#577590] transition-colors group-hover:bg-[#577590] group-hover:text-white">
+                        <MailIcon className="size-5" />
+                      </span>
+                      <div>
+                        <p className="text-xs font-semibold text-muted-foreground">Correo electrónico oficial</p>
+                        <p className="text-sm font-bold text-foreground mt-0.5">{siteConfig.email}</p>
+                      </div>
+                    </div>
+                    <ExternalLinkIcon className="size-4 text-muted-foreground group-hover:text-foreground transition-colors mr-1" />
+                  </a>
+
+                  <a
+                    href="https://instagram.com/spintsoft"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center justify-between gap-3.5 rounded-2xl border border-border/70 bg-card p-4 shadow-sm transition-all duration-200 hover:border-[#f08a4b] hover:scale-[1.02] group"
+                  >
+                    <div className="flex items-center gap-3.5">
+                      <span className="flex size-11 shrink-0 items-center justify-center rounded-xl bg-gradient-to-tr from-[#f2a541]/20 via-[#f08a4b]/20 to-[#d78a76]/20 text-[#f08a4b] transition-colors group-hover:bg-gradient-to-tr group-hover:from-purple-600 group-hover:to-pink-500 group-hover:text-white">
+                        <SiInstagram className="size-5" />
+                      </span>
+                      <div>
+                        <p className="text-xs font-semibold text-muted-foreground">Instagram oficial</p>
+                        <p className="text-sm font-bold text-foreground mt-0.5">@spintsoft</p>
+                      </div>
+                    </div>
+                    <ExternalLinkIcon className="size-4 text-muted-foreground group-hover:text-foreground transition-colors mr-1" />
+                  </a>
+                </div>
+              </div>
+            </BlurFade>
+
+            <BlurFade direction="left" delay={0.15}>
+              <ContactForm />
+            </BlurFade>
+          </div>
         </div>
       </section>
 

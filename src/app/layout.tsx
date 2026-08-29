@@ -23,15 +23,14 @@ export const metadata: Metadata = {
   },
   description: siteConfig.description,
   keywords: [
-    "shadcn ui",
-    "animated components",
-    "react components",
-    "landing page template",
-    "tailwind css",
-    "motion",
-    "magic ui alternative",
-    "aceternity alternative",
-    "free ui library",
+    "software a medida",
+    "sistemas de informacion",
+    "automatizacion de procesos",
+    "desarrollo web",
+    "software para empresas",
+    "ingenieria de software",
+    "gestion empresarial",
+    "Spintsoft",
   ],
   authors: [{ name: siteConfig.name }],
   openGraph: {
@@ -55,12 +54,12 @@ export default function RootLayout({
 }>) {
   return (
     <html
-      lang="en"
+      lang="es"
       suppressHydrationWarning
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">
-        <ThemeProvider attribute="class" defaultTheme="dark" disableTransitionOnChange>
+      <body className="min-h-full flex flex-col bg-background text-foreground">
+        <ThemeProvider attribute="class" defaultTheme="light" enableSystem={false} disableTransitionOnChange>
           {children}
         </ThemeProvider>
       </body>

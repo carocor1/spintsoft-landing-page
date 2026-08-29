@@ -208,8 +208,6 @@ export function ProductsCurvedCarousel({ className }: { className?: string }) {
     <div
       ref={containerRef}
       className={cn("relative mx-auto w-full max-w-5xl", className)}
-      onMouseEnter={() => setIsPaused(true)}
-      onMouseLeave={() => setIsPaused(false)}
     >
       {/* Main Interactive Stage: Curved Vertical Rail + Product Showcase Card (Fixed equal height) */}
       <div className="relative grid gap-6 lg:grid-cols-12 items-stretch">

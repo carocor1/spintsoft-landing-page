@@ -32,17 +32,17 @@ const symptoms = [
     description: "Pedidos, consultas y presupuestos perdidos entre mensajes.",
     icon: MessageSquareWarningIcon,
     badge: "Mensajes enterrados",
-    color: "bg-[#f08a4b]/15 text-[#f08a4b] border-[#f08a4b]/30",
-    glowColor: "group-hover:shadow-[#f08a4b]/20",
+    color: "bg-red-500/15 text-red-600 border-red-500/30",
+    glowColor: "group-hover:shadow-red-500/20",
   },
   {
     title: "Tareas manuales y repetitivas",
-    quote: "“Esto lo hacemos todos los días.”",
+    quote: "“Perdemos horas haciendo esto todos los días”",
     description: "Carga de datos, controles y reportes que consumen horas.",
     icon: ClockAlertIcon,
     badge: "Carga mecánica",
-    color: "bg-[#f2a541]/15 text-[#f2a541] border-[#f2a541]/30",
-    glowColor: "group-hover:shadow-[#f2a541]/20",
+    color: "bg-red-500/15 text-red-600 border-red-500/30",
+    glowColor: "group-hover:shadow-red-500/20",
   },
   {
     title: "Información dispersa",
@@ -50,8 +50,8 @@ const symptoms = [
     description: "Información repartida entre computadoras, mails, chats y papeles.",
     icon: SearchXIcon,
     badge: "Cero trazabilidad",
-    color: "bg-[#d78a76]/15 text-[#d78a76] border-[#d78a76]/30",
-    glowColor: "group-hover:shadow-[#d78a76]/20",
+    color: "bg-red-500/15 text-red-600 border-red-500/30",
+    glowColor: "group-hover:shadow-red-500/20",
   },
 ];
 
@@ -64,7 +64,7 @@ export function SymptomsAnimatedList({ className }: { className?: string }) {
     if (!inView) return;
     if (visibleCount < symptoms.length) {
       // First card after 600ms, then 1800ms between each subsequent card
-      const delay = visibleCount === 0 ? 600 : 1800;
+      const delay = visibleCount === 0 ? 300 : 1000;
       const timer = setTimeout(() => {
         setVisibleCount((prev) => prev + 1);
       }, delay);

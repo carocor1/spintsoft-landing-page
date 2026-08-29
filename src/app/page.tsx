@@ -24,6 +24,7 @@ import { SiteFooter } from "@/components/site-footer";
 import { DemosCarousel } from "@/components/demo/demos-carousel";
 import { SymptomsAnimatedList } from "@/components/demo/symptoms-animated-list";
 import { TechMarquee } from "@/components/demo/tech-marquee";
+import { ProductsCurvedCarousel } from "@/components/demo/products-curved-carousel";
 import { ContactForm } from "@/components/template/contact-form";
 import { AnimatedGradientText } from "@/components/velora/animated-gradient-text";
 import { AnimatedTooltip } from "@/components/velora/animated-tooltip";
@@ -166,127 +167,28 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── Beneficios / Impacto Real ── */}
-      <section id="beneficios" className="relative py-20 lg:py-28 border-t border-border/40">
+      {/* ── Cartera de Productos / Impacto Real ── */}
+      <section id="soluciones" className="relative py-20 lg:py-28 border-t border-border/40 overflow-hidden">
         <div className="mx-auto max-w-6xl px-4 lg:px-8">
           <BlurFade>
             <div className="text-center">
               <span className="inline-flex items-center gap-1.5 rounded-full bg-[#577590]/15 border border-[#577590]/30 px-3.5 py-1 text-xs font-semibold text-[#577590]">
                 <TrendingUpIcon className="size-3.5" />
-                Impacto Real en tu Empresa
+                Cartera de Soluciones
               </span>
               <h2 className="mt-3 text-3xl font-extrabold tracking-tight text-foreground sm:text-4xl lg:text-5xl max-w-3xl mx-auto leading-tight">
                 Menos tareas manuales. Más control.{" "}
                 <span className="text-[#577590]">Más tiempo para hacer crecer tu negocio.</span>
               </h2>
+              <p className="mx-auto mt-4 max-w-2xl text-sm sm:text-base text-muted-foreground leading-relaxed">
+                Descubrí las soluciones modulares y escalables que implementamos para potenciar cada área de tu empresa.
+              </p>
             </div>
           </BlurFade>
 
-          <div className="mt-14 grid gap-5 md:grid-cols-2">
-            {/* Card 1 */}
-            <BlurFade delay={0.1}>
-              <SpotlightCard className="border-border/70 bg-card p-0 shadow-sm overflow-hidden transition-all duration-300 hover:border-[#f08a4b]/50">
-                <div className="flex flex-row min-h-[160px]">
-                  <div className="w-1/3 shrink-0 relative overflow-hidden bg-muted border-r border-border/40">
-                    <img
-                      src="/resources/automatizacion.jpg"
-                      alt="Automatización de tareas"
-                      className="absolute inset-0 size-full object-cover object-center"
-                    />
-                  </div>
-                  <div className="flex-1 p-5 sm:p-6 flex flex-col justify-center">
-                    <div className="flex size-9 items-center justify-center rounded-xl bg-[#f08a4b]/15 text-[#f08a4b] mb-2.5">
-                      <ZapIcon className="size-4.5" />
-                    </div>
-                    <h3 className="text-base sm:text-lg font-bold text-foreground leading-snug">
-                      Automatizá lo repetitivo
-                    </h3>
-                    <p className="mt-1.5 text-xs text-muted-foreground leading-relaxed">
-                      Dejá que el sistema haga las tareas que hoy hace tu equipo.
-                    </p>
-                  </div>
-                </div>
-              </SpotlightCard>
-            </BlurFade>
-
-            {/* Card 2 */}
-            <BlurFade delay={0.2}>
-              <SpotlightCard className="border-border/70 bg-card p-0 shadow-sm overflow-hidden transition-all duration-300 hover:border-[#577590]/50">
-                <div className="flex flex-row min-h-[160px]">
-                  <div className="w-1/3 shrink-0 relative overflow-hidden bg-muted border-r border-border/40">
-                    <img
-                      src="/resources/centralizacion.jpg"
-                      alt="Información centralizada"
-                      className="absolute inset-0 size-full object-cover object-center"
-                    />
-                  </div>
-                  <div className="flex-1 p-5 sm:p-6 flex flex-col justify-center">
-                    <div className="flex size-9 items-center justify-center rounded-xl bg-[#577590]/15 text-[#577590] mb-2.5">
-                      <ChartColumn className="size-4.5" />
-                    </div>
-                    <h3 className="text-base sm:text-lg font-bold text-foreground leading-snug">
-                      Toda la información en un solo lugar
-                    </h3>
-                    <p className="mt-1.5 text-xs text-muted-foreground leading-relaxed">
-                      Datos centralizados, actualizados y disponibles cuando los necesitás.
-                    </p>
-                  </div>
-                </div>
-              </SpotlightCard>
-            </BlurFade>
-
-            {/* Card 3 */}
-            <BlurFade delay={0.3}>
-              <SpotlightCard className="border-border/70 bg-card p-0 shadow-sm overflow-hidden transition-all duration-300 hover:border-[#f2a541]/50">
-                <div className="flex flex-row min-h-[160px]">
-                  <div className="w-1/3 shrink-0 relative overflow-hidden bg-muted border-r border-border/40">
-                    <img
-                      src="/resources/decisiones.jpg"
-                      alt="Toma de decisiones con datos"
-                      className="absolute inset-0 size-full object-cover object-center"
-                    />
-                  </div>
-                  <div className="flex-1 p-5 sm:p-6 flex flex-col justify-center">
-                    <div className="flex size-9 items-center justify-center rounded-xl bg-[#f2a541]/15 text-[#f2a541] mb-2.5">
-                      <TargetIcon className="size-4.5" />
-                    </div>
-                    <h3 className="text-base sm:text-lg font-bold text-foreground leading-snug">
-                      Tomá mejores decisiones
-                    </h3>
-                    <p className="mt-1.5 text-xs text-muted-foreground leading-relaxed">
-                      Convertí tus datos en información clara para decidir con confianza.
-                    </p>
-                  </div>
-                </div>
-              </SpotlightCard>
-            </BlurFade>
-
-            {/* Card 4 */}
-            <BlurFade delay={0.4}>
-              <SpotlightCard className="border-border/70 bg-card p-0 shadow-sm overflow-hidden transition-all duration-300 hover:border-[#d78a76]/50">
-                <div className="flex flex-row min-h-[160px]">
-                  <div className="w-1/3 shrink-0 relative overflow-hidden bg-muted border-r border-border/40">
-                    <img
-                      src="/resources/escalabilidad.jpg"
-                      alt="Sistema que crece con vos"
-                      className="absolute inset-0 size-full object-cover object-center"
-                    />
-                  </div>
-                  <div className="flex-1 p-5 sm:p-6 flex flex-col justify-center">
-                    <div className="flex size-9 items-center justify-center rounded-xl bg-[#d78a76]/15 text-[#d78a76] mb-2.5">
-                      <RocketIcon className="size-4.5" />
-                    </div>
-                    <h3 className="text-base sm:text-lg font-bold text-foreground leading-snug">
-                      Un sistema que crece con vos
-                    </h3>
-                    <p className="mt-1.5 text-xs text-muted-foreground leading-relaxed">
-                      Empezá con lo que necesitás hoy y agregá nuevas funcionalidades cuando tu negocio lo requiera.
-                    </p>
-                  </div>
-                </div>
-              </SpotlightCard>
-            </BlurFade>
-          </div>
+          <BlurFade delay={0.2} className="mt-12">
+            <ProductsCurvedCarousel />
+          </BlurFade>
         </div>
       </section>
 

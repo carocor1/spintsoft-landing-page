@@ -40,8 +40,8 @@ export function SiteFooter() {
               </a>
             </li>
             <li>
-              <a href="#beneficios" className="transition-colors hover:text-foreground">
-                Beneficios
+              <a href="#soluciones" className="transition-colors hover:text-foreground">
+                Soluciones
               </a>
             </li>
             <li>

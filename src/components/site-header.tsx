@@ -28,8 +28,8 @@ export function SiteHeader() {
           <a href="#sintomas" className="transition-colors hover:text-foreground">
             ¿Por qué un sistema?
           </a>
-          <a href="#beneficios" className="transition-colors hover:text-foreground">
-            Beneficios
+          <a href="#soluciones" className="transition-colors hover:text-foreground">
+            Soluciones
           </a>
           <a href="#nosotros" className="transition-colors hover:text-foreground">
             Quiénes Somos

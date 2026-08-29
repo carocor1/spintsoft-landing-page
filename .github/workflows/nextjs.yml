@@ -1,4 +1,4 @@
-```yaml
+
 name: Deploy Next.js to GitHub Pages
 
 on:
@@ -49,4 +49,3 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
-```

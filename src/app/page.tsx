@@ -38,7 +38,7 @@ import { Typewriter } from "@/components/velora/typewriter";
 import { siteConfig } from "@/lib/site-config";
 
 const basePath =
-  process.env.GITHUB_ACTIONS === "true" ? "/spintsoft-landing-page" : "";
+  process.env.GITHUB_ACTIONS === "";
 
 const teamMembers = [
   {

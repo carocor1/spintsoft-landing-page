@@ -91,7 +91,9 @@ export default function Home() {
 
           <BlurFade delay={0.25}>
             <p className="mx-auto mt-6 max-w-2xl text-base sm:text-lg text-muted-foreground text-pretty leading-relaxed">
-              Diseñamos sistemas de información personalizados para empresas y organizaciones que buscan centralizar su gestión, eliminar tareas mecánicas y operar con tecnología de vanguardia.
+              Diseñamos sistemas de información personalizados para empresas y
+              organizaciones que buscan centralizar su gestión, eliminar tareas
+              mecánicas y operar con tecnología de vanguardia.
             </p>
           </BlurFade>
 
@@ -100,7 +102,9 @@ export default function Home() {
               <ShimmerButton
                 className="bg-[#577590] text-white shadow-md text-sm font-semibold"
                 onClick={() => {
-                  document.getElementById("contacto")?.scrollIntoView({ behavior: "smooth" });
+                  document
+                    .getElementById("contacto")
+                    ?.scrollIntoView({ behavior: "smooth" });
                 }}
               >
                 <RocketIcon className="size-4 mr-1.5" />
@@ -123,7 +127,10 @@ export default function Home() {
       </section>
 
       {/* ── Demos ── */}
-      <section id="demos" className="relative py-20 lg:py-28 border-t border-border/40">
+      <section
+        id="demos"
+        className="relative py-20 lg:py-28 border-t border-border/40"
+      >
         <DotPattern className="[mask-image:radial-gradient(ellipse_at_center,black,transparent_75%)] opacity-30" />
         <div className="relative mx-auto max-w-6xl px-4 lg:px-8">
           <BlurFade>
@@ -133,7 +140,8 @@ export default function Home() {
                 Demostraciones Interactivas
               </span>
               <h2 className="mt-3 text-3xl font-extrabold tracking-tight text-foreground sm:text-4xl lg:text-5xl">
-                Mirá lo que podemos <span className="text-[#577590]">construir para vos</span>
+                Mirá lo que podemos{" "}
+                <span className="text-[#577590]">construir para vos</span>
               </h2>
               <p className="mx-auto mt-4 max-w-2xl text-sm sm:text-base text-muted-foreground leading-relaxed">
                 Conocé algunas de las experiencias que desarrollamos para distintos rubros y descubrí cómo podemos adaptar cada solución a tu negocio.
@@ -148,7 +156,10 @@ export default function Home() {
       </section>
 
       {/* ── Síntomas / Por qué un sistema ── */}
-      <section id="sintomas" className="relative py-20 lg:py-28 border-t border-border/40 overflow-hidden">
+      <section
+        id="sintomas"
+        className="relative py-20 lg:py-28 border-t border-border/40 overflow-hidden"
+      >
         <div className="mx-auto grid max-w-6xl items-center gap-12 px-4 lg:grid-cols-2 lg:gap-16 lg:px-8">
           <BlurFade direction="right">
             <SymptomsAnimatedList />
@@ -161,14 +172,22 @@ export default function Home() {
                 Diagnóstico Organizacional
               </span>
               <h2 className="text-3xl font-extrabold tracking-tight text-foreground sm:text-4xl leading-tight">
-                ¿Tu negocio creció, pero tus herramientas <span className="text-[#f08a4b]">quedaron atrás?</span>
+                ¿Tu negocio creció, pero tus herramientas{" "}
+                <span className="text-[#f08a4b]">quedaron atrás?</span>
               </h2>
               <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">
-                Es común comenzar con planillas y chats, pero con el crecimiento la carga manual genera cuellos de botella y desorden. Un sistema a medida transforma esa realidad.
+                Es común comenzar con planillas y chats, pero con el crecimiento
+                la carga manual genera cuellos de botella y desorden. Un sistema
+                a medida transforma esa realidad.
               </p>
               <div className="pt-2">
-                <Button className="rounded-full bg-[#577590] hover:bg-[#435b71] text-white text-xs font-semibold shadow-sm transition-transform active:scale-95" asChild>
-                  <a href="#contacto">Contanos tu caso y coordinemos una charla</a>
+                <Button
+                  className="rounded-full bg-[#577590] hover:bg-[#435b71] text-white text-xs font-semibold shadow-sm transition-transform active:scale-95"
+                  asChild
+                >
+                  <a href="#contacto">
+                    Contanos tu caso y coordinemos una charla
+                  </a>
                 </Button>
               </div>
             </div>
@@ -177,7 +196,10 @@ export default function Home() {
       </section>
 
       {/* ── Cartera de Productos / Impacto Real ── */}
-      <section id="soluciones" className="relative py-20 lg:py-28 border-t border-border/40 overflow-hidden">
+      <section
+        id="soluciones"
+        className="relative py-20 lg:py-28 border-t border-border/40 overflow-hidden"
+      >
         <div className="mx-auto max-w-6xl px-4 lg:px-8">
           <BlurFade>
             <div className="text-center">
@@ -187,10 +209,13 @@ export default function Home() {
               </span>
               <h2 className="mt-3 text-3xl font-extrabold tracking-tight text-foreground sm:text-4xl lg:text-5xl max-w-3xl mx-auto leading-tight">
                 Menos tareas manuales. Más control.{" "}
-                <span className="text-[#577590]">Más tiempo para hacer crecer tu negocio.</span>
+                <span className="text-[#577590]">
+                  Más tiempo para hacer crecer tu negocio.
+                </span>
               </h2>
               <p className="mx-auto mt-4 max-w-2xl text-sm sm:text-base text-muted-foreground leading-relaxed">
-                Descubrí las soluciones modulares y escalables que implementamos para potenciar cada área de tu empresa.
+                Descubrí las soluciones modulares y escalables que implementamos
+                para potenciar cada área de tu empresa.
               </p>
             </div>
           </BlurFade>
@@ -202,7 +227,10 @@ export default function Home() {
       </section>
 
       {/* ── Quiénes Somos ── */}
-      <section id="nosotros" className="relative py-20 lg:py-28 border-t border-border/40">
+      <section
+        id="nosotros"
+        className="relative py-20 lg:py-28 border-t border-border/40"
+      >
         <div className="mx-auto max-w-6xl px-4 lg:px-8">
           <BlurFade>
             <div className="text-center">
@@ -214,14 +242,17 @@ export default function Home() {
                 Quiénes <span className="text-[#577590]">Somos</span>
               </h2>
               <p className="mx-auto mt-4 max-w-2xl text-sm sm:text-base text-muted-foreground leading-relaxed">
-                Somos un equipo de estudiantes de Ingeniería en Sistemas con ganas de crear software que realmente haga la diferencia.
+                Somos un equipo de estudiantes de Ingeniería en Sistemas con
+                ganas de crear software que realmente haga la diferencia.
               </p>
 
               <div className="mt-6 flex flex-wrap items-center justify-center gap-4">
                 <div className="inline-flex items-center gap-3.5 rounded-full border border-border/80 bg-card px-5 py-2.5 shadow-sm">
                   <AnimatedTooltip items={teamMembers} />
                   <div className="text-left text-xs">
-                    <p className="font-bold text-foreground">Juan, Carolina y Belén</p>
+                    <p className="font-bold text-foreground">
+                      Juan, Carolina y Belén
+                    </p>
                     <p className="text-[11px] text-muted-foreground flex items-center gap-1">
                       <MapPinIcon className="size-3 text-[#f08a4b]" />
                       Villa María, Córdoba
@@ -237,15 +268,22 @@ export default function Home() {
             <BlurFade delay={0.1}>
               <TiltCard className="h-full">
                 <div className="relative group rounded-3xl p-0.5 overflow-hidden h-full">
-                  <BorderBeam size={80} duration={6} className="from-[#577590] via-[#f2a541] to-[#f08a4b]" />
+                  <BorderBeam
+                    size={80}
+                    duration={6}
+                    className="from-[#577590] via-[#f2a541] to-[#f08a4b]"
+                  />
                   <SpotlightCard className="h-full p-7 md:p-8 border-border/80 bg-card shadow-sm">
                     <div>
                       <div className="mb-4 flex size-12 items-center justify-center rounded-2xl bg-[#577590]/15 text-[#577590] transition-transform duration-300 group-hover:scale-110">
                         <Code2Icon className="size-6" />
                       </div>
-                      <h3 className="text-lg font-bold text-foreground">Desarrollamos a medida</h3>
+                      <h3 className="text-lg font-bold text-foreground">
+                        Desarrollamos a medida
+                      </h3>
                       <p className="mt-2.5 text-xs sm:text-sm text-muted-foreground leading-relaxed">
-                        Construimos soluciones pensadas para la forma en que trabaja cada negocio.
+                        Construimos soluciones pensadas para la forma en que
+                        trabaja cada negocio.
                       </p>
                     </div>
                   </SpotlightCard>
@@ -256,15 +294,22 @@ export default function Home() {
             <BlurFade delay={0.2}>
               <TiltCard className="h-full">
                 <div className="relative group rounded-3xl p-0.5 overflow-hidden h-full">
-                  <BorderBeam size={80} duration={6} className="from-[#f08a4b] via-[#d78a76] to-[#f2a541]" />
+                  <BorderBeam
+                    size={80}
+                    duration={6}
+                    className="from-[#f08a4b] via-[#d78a76] to-[#f2a541]"
+                  />
                   <SpotlightCard className="h-full p-7 md:p-8 border-border/80 bg-card shadow-sm">
                     <div>
                       <div className="mb-4 flex size-12 items-center justify-center rounded-2xl bg-[#f08a4b]/15 text-[#f08a4b] transition-transform duration-300 group-hover:scale-110">
                         <HeartIcon className="size-6" />
                       </div>
-                      <h3 className="text-lg font-bold text-foreground">Trabajamos directamente con vos</h3>
+                      <h3 className="text-lg font-bold text-foreground">
+                        Trabajamos directamente con vos
+                      </h3>
                       <p className="mt-2.5 text-xs sm:text-sm text-muted-foreground leading-relaxed">
-                        Hablás con quienes diseñan y desarrollan tu sistema. Sin intermediarios.
+                        Hablás con quienes diseñan y desarrollan tu sistema. Sin
+                        intermediarios.
                       </p>
                     </div>
                   </SpotlightCard>
@@ -275,15 +320,22 @@ export default function Home() {
             <BlurFade delay={0.3}>
               <TiltCard className="h-full">
                 <div className="relative group rounded-3xl p-0.5 overflow-hidden h-full">
-                  <BorderBeam size={80} duration={6} className="from-[#f2a541] via-[#577590] to-[#f08a4b]" />
+                  <BorderBeam
+                    size={80}
+                    duration={6}
+                    className="from-[#f2a541] via-[#577590] to-[#f08a4b]"
+                  />
                   <SpotlightCard className="h-full p-7 md:p-8 border-border/80 bg-card shadow-sm">
                     <div>
                       <div className="mb-4 flex size-12 items-center justify-center rounded-2xl bg-[#f2a541]/15 text-[#f2a541] transition-transform duration-300 group-hover:scale-110">
                         <RocketIcon className="size-6" />
                       </div>
-                      <h3 className="text-lg font-bold text-foreground">Tenemos ganas de construir</h3>
+                      <h3 className="text-lg font-bold text-foreground">
+                        Tenemos ganas de construir
+                      </h3>
                       <p className="mt-2.5 text-xs sm:text-sm text-muted-foreground leading-relaxed">
-                        Nos involucramos en cada proyecto y buscamos crear soluciones que puedan crecer con tu negocio.
+                        Nos involucramos en cada proyecto y buscamos crear
+                        soluciones que puedan crecer con tu negocio.
                       </p>
                     </div>
                   </SpotlightCard>
@@ -303,7 +355,10 @@ export default function Home() {
       </section>
 
       {/* ── Contacto ── */}
-      <section id="contacto" className="relative py-20 lg:py-28 border-t border-border/40 overflow-hidden">
+      <section
+        id="contacto"
+        className="relative py-20 lg:py-28 border-t border-border/40 overflow-hidden"
+      >
         <Particles quantity={40} className="opacity-30" />
         <div className="relative mx-auto max-w-6xl px-4 lg:px-8">
           <div className="grid gap-10 lg:grid-cols-[1fr_1.3fr] items-start">
@@ -317,7 +372,8 @@ export default function Home() {
                   Hablemos de tu proyecto o idea
                 </h2>
                 <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">
-                  Podés escribirnos a través del formulario o directamente a nuestros canales oficiales de contacto:
+                  Podés escribirnos a través del formulario o directamente a
+                  nuestros canales oficiales de contacto:
                 </p>
 
                 <div className="space-y-3.5 pt-2">
@@ -330,8 +386,12 @@ export default function Home() {
                         <MailIcon className="size-5" />
                       </span>
                       <div>
-                        <p className="text-xs font-semibold text-muted-foreground">Correo electrónico oficial</p>
-                        <p className="text-sm font-bold text-foreground mt-0.5">{siteConfig.email}</p>
+                        <p className="text-xs font-semibold text-muted-foreground">
+                          Correo electrónico oficial
+                        </p>
+                        <p className="text-sm font-bold text-foreground mt-0.5">
+                          {siteConfig.email}
+                        </p>
                       </div>
                     </div>
                     <ExternalLinkIcon className="size-4 text-muted-foreground group-hover:text-foreground transition-colors mr-1" />
@@ -348,8 +408,12 @@ export default function Home() {
                         <SiInstagram className="size-5" />
                       </span>
                       <div>
-                        <p className="text-xs font-semibold text-muted-foreground">Instagram oficial</p>
-                        <p className="text-sm font-bold text-foreground mt-0.5">@spintsoft</p>
+                        <p className="text-xs font-semibold text-muted-foreground">
+                          Instagram oficial
+                        </p>
+                        <p className="text-sm font-bold text-foreground mt-0.5">
+                          @spintsoft
+                        </p>
                       </div>
                     </div>
                     <ExternalLinkIcon className="size-4 text-muted-foreground group-hover:text-foreground transition-colors mr-1" />

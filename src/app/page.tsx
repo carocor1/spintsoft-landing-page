@@ -37,8 +37,7 @@ import { TiltCard } from "@/components/velora/tilt-card";
 import { Typewriter } from "@/components/velora/typewriter";
 import { siteConfig } from "@/lib/site-config";
 
-const basePath =
-  process.env.GITHUB_ACTIONS === "";
+const basePath = "";
 
 const teamMembers = [
   {
@@ -137,7 +136,7 @@ export default function Home() {
                 Mirá lo que podemos <span className="text-[#577590]">construir para vos</span>
               </h2>
               <p className="mx-auto mt-4 max-w-2xl text-sm sm:text-base text-muted-foreground leading-relaxed">
-                No partimos desde cero: explorá nuestras demos funcionales de sistemas de gestión, flujos automatizados, portales y dashboards para entender cómo podemos resolver tus desafíos.
+                Conocé algunas de las experiencias que desarrollamos para distintos rubros y descubrí cómo podemos adaptar cada solución a tu negocio.
               </p>
             </div>
           </BlurFade>

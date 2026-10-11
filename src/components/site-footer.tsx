@@ -1,5 +1,6 @@
 import Link from "next/link";
-import { Code2Icon, MailIcon, ShieldCheckIcon } from "lucide-react";
+import Image from "next/image";
+import { MailIcon, ShieldCheckIcon } from "lucide-react";
 import { SiInstagram, SiWhatsapp } from "react-icons/si";
 
 import { siteConfig } from "@/lib/site-config";
@@ -10,9 +11,13 @@ export function SiteFooter() {
       <div className="mx-auto grid max-w-6xl gap-10 px-4 md:grid-cols-[1.6fr_1fr_1.4fr] lg:px-8">
         <div>
           <Link href="/" className="flex items-center gap-2.5 font-bold tracking-tight text-foreground">
-            <span className="flex size-8 items-center justify-center rounded-lg bg-gradient-to-br from-[#577590] via-[#f2a541] to-[#f08a4b] text-white">
-              <Code2Icon className="size-4.5" />
-            </span>
+            <Image
+              src="/resources/logo-spintsoft.png"
+              alt="Logo de Spintsoft"
+              width={40}
+              height={40}
+              className="size-10 object-contain"
+            />
             <span className="text-lg font-extrabold">
               Spint<span className="text-[#f08a4b]">soft</span>
             </span>

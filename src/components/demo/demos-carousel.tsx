@@ -164,7 +164,10 @@ export function DemosCarousel() {
                     fill
                     sizes="(max-width: 1024px) 100vw, 700px"
                     className="object-contain object-center"
-                    priority={activeIndex === 0}
+                    // Preload each small local screenshot so switching demos is instant.
+                    preload={activeIndex === 0}
+                    loading={activeIndex === 0 ? "eager" : "lazy"}
+                    fetchPriority={activeIndex === 0 ? "high" : "auto"}
                   />
                 </div>
               </BrowserMockup>

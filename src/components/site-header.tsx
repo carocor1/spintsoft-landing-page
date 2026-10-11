@@ -1,5 +1,6 @@
 import Link from "next/link";
-import { Code2Icon, SparklesIcon, SendIcon } from "lucide-react";
+import Image from "next/image";
+import { SendIcon } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import { ThemeToggle } from "@/components/theme-toggle";
@@ -8,10 +9,15 @@ export function SiteHeader() {
   return (
     <header className="fixed inset-x-0 top-0 z-50 border-b border-border/50 bg-background/80 backdrop-blur-xl shadow-xs">
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4 lg:px-8">
-        <Link href="/" className="flex items-center gap-2.5 font-bold tracking-tight text-foreground group">
-          <span className="flex size-9 items-center justify-center rounded-xl bg-gradient-to-br from-[#577590] via-[#f2a541] to-[#f08a4b] text-white shadow-sm transition-transform duration-200 group-hover:scale-105">
-            <Code2Icon className="size-5" />
-          </span>
+        <Link href="/" className="flex items-center gap-1 font-bold tracking-tight text-foreground group">
+          <Image
+            src="/resources/logo-spintsoft.png"
+            alt="Logo de Spintsoft"
+            width={52}
+            height={52}
+            className="size-[52px] object-contain transition-transform duration-200 group-hover:scale-105"
+            priority
+          />
           <div className="flex flex-col">
             <span className="text-lg leading-tight font-extrabold text-foreground tracking-tight">
               Spint<span className="text-[#f08a4b]">soft</span>

@@ -22,6 +22,11 @@ export const metadata: Metadata = {
     template: `%s — ${siteConfig.name}`,
   },
   description: siteConfig.description,
+  icons: {
+    icon: "/resources/spintsoft-favicon.png",
+    shortcut: "/resources/spintsoft-favicon.png",
+    apple: "/resources/spintsoft-favicon.png",
+  },
   keywords: [
     "software a medida",
     "sistemas de informacion",

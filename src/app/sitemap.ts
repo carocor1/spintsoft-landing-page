@@ -9,9 +9,9 @@ const BASE = siteConfig.url;
 export default function sitemap(): MetadataRoute.Sitemap {
   return [
     {
-      url: `${BASE}`,
+      url: BASE,
       changeFrequency: "weekly",
-      priority: 1.0,
+      priority: 1,
     },
   ];
 }

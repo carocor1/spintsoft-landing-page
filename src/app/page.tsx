@@ -12,7 +12,7 @@ import {
   TrendingUpIcon,
   UsersIcon,
 } from "lucide-react";
-import { SiInstagram } from "react-icons/si";
+import { SiInstagram, SiWhatsapp } from "react-icons/si";
 
 import { Button } from "@/components/ui/button";
 import { SiteHeader } from "@/components/site-header";
@@ -377,6 +377,28 @@ export default function Home() {
                 </p>
 
                 <div className="space-y-3.5 pt-2">
+                  <a
+                    href={siteConfig.whatsappUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center justify-between gap-3.5 rounded-2xl border border-border/70 bg-card p-4 shadow-sm transition-all duration-200 hover:border-[#25D366] hover:scale-[1.02] group"
+                  >
+                    <div className="flex items-center gap-3.5">
+                      <span className="flex size-11 shrink-0 items-center justify-center rounded-xl bg-[#25D366]/15 text-[#25D366] transition-colors group-hover:bg-[#25D366] group-hover:text-white">
+                        <SiWhatsapp className="size-5" />
+                      </span>
+                      <div>
+                        <p className="text-xs font-semibold text-muted-foreground">
+                          Escribinos por WhatsApp
+                        </p>
+                        <p className="text-sm font-bold text-foreground mt-0.5">
+                          +54 9 3385 44-2387
+                        </p>
+                      </div>
+                    </div>
+                    <ExternalLinkIcon className="size-4 text-muted-foreground group-hover:text-foreground transition-colors mr-1" />
+                  </a>
+
                   <a
                     href={`mailto:${siteConfig.email}`}
                     className="flex items-center justify-between gap-3.5 rounded-2xl border border-border/70 bg-card p-4 shadow-sm transition-all duration-200 hover:border-[#577590] hover:scale-[1.02] group"

@@ -3,6 +3,8 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 
 import { ThemeProvider } from "@/components/theme-provider";
+import { WhatsAppFloat } from "@/components/whatsapp-float";
+import { JsonLd } from "@/components/seo/json-ld";
 import { siteConfig } from "@/lib/site-config";
 
 const geistSans = Geist({
@@ -22,6 +24,9 @@ export const metadata: Metadata = {
     template: `%s — ${siteConfig.name}`,
   },
   description: siteConfig.description,
+  alternates: {
+    canonical: "/",
+  },
   icons: {
     icon: "/resources/spintsoft-favicon.png",
     shortcut: "/resources/spintsoft-favicon.png",
@@ -68,7 +73,9 @@ export default function RootLayout({
         className="min-h-full flex flex-col bg-background text-foreground"
       >
         <ThemeProvider attribute="class" defaultTheme="light" enableSystem={false} disableTransitionOnChange>
+          <JsonLd />
           {children}
+          <WhatsAppFloat />
         </ThemeProvider>
       </body>
     </html>

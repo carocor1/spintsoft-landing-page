@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { Code2Icon, MailIcon, ShieldCheckIcon } from "lucide-react";
-import { SiInstagram } from "react-icons/si";
+import { SiInstagram, SiWhatsapp } from "react-icons/si";
 
 import { siteConfig } from "@/lib/site-config";
 
@@ -63,6 +63,16 @@ export function SiteFooter() {
             Escribinos o seguinos en nuestras redes:
           </p>
           <div className="mt-3 flex flex-col gap-2.5">
+            <a
+              href={siteConfig.whatsappUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2.5 rounded-xl border border-[#25D366]/30 bg-[#25D366]/10 px-4 py-2 text-xs font-semibold text-[#25D366] shadow-xs hover:bg-[#25D366]/20 hover:border-[#25D366] transition-colors w-fit"
+            >
+              <SiWhatsapp className="size-4" />
+              +54 9 3385 44-2387
+            </a>
+
             <a
               href={`mailto:${siteConfig.email}`}
               className="inline-flex items-center gap-2.5 rounded-xl border border-[#577590]/30 bg-[#577590]/10 px-4 py-2 text-xs font-semibold text-[#577590] shadow-xs hover:bg-[#577590]/20 hover:border-[#577590] transition-colors w-fit"

@@ -1,7 +1,7 @@
 "use client";
 
-import { useState } from "react";
-import { CheckIcon, SendIcon, MailIcon, CopyIcon, CheckCheckIcon, ExternalLinkIcon, SparklesIcon } from "lucide-react";
+import { useRef, useState } from "react";
+import { CheckIcon, SendIcon, MailIcon, CopyIcon, CheckCheckIcon } from "lucide-react";
 import { SiGmail } from "react-icons/si";
 
 import { Button } from "@/components/ui/button";
@@ -12,9 +12,13 @@ import { confettiBurst } from "@/components/velora/confetti";
 import { siteConfig } from "@/lib/site-config";
 
 const paletteColors = ["#577590", "#f3ca40", "#f2a541", "#f08a4b", "#d78a76"];
+const MINIMUM_FORM_TIME_MS = 3_000;
+const MAX_LENGTHS = { name: 120, email: 254, subject: 160, message: 5_000 };
 
 export function ContactForm() {
+  const formStartedAt = useRef<number | null>(null);
   const [sent, setSent] = useState(false);
+  const [formError, setFormError] = useState("");
   const [copied, setCopied] = useState(false);
   const [copiedBody, setCopiedBody] = useState(false);
   const [formData, setFormData] = useState({
@@ -47,8 +51,47 @@ export function ContactForm() {
     setTimeout(() => setCopiedBody(false), 2500);
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+
+    const form = e.currentTarget;
+    const formValues = new FormData(form);
+    const honeypot = String(formValues.get("website") ?? "").trim();
+
+    // Bots often fill every field, including this one hidden from people.
+    if (honeypot) return;
+
+    if (
+      formStartedAt.current === null ||
+      Date.now() - formStartedAt.current < MINIMUM_FORM_TIME_MS
+    ) {
+      setFormError("Esperá unos segundos antes de enviar el formulario.");
+      return;
+    }
+
+    const fields = new FormData(form);
+    const normalizedData = {
+      name: String(fields.get("name") ?? "").trim(),
+      email: String(fields.get("email") ?? "").trim(),
+      subject: String(fields.get("subject") ?? "").trim(),
+      message: String(fields.get("message") ?? "").trim(),
+    };
+
+    if (
+      !normalizedData.name ||
+      normalizedData.name.length > MAX_LENGTHS.name ||
+      normalizedData.email.length > MAX_LENGTHS.email ||
+      !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(normalizedData.email) ||
+      normalizedData.subject.length > MAX_LENGTHS.subject ||
+      !normalizedData.message ||
+      normalizedData.message.length > MAX_LENGTHS.message
+    ) {
+      setFormError("Revisá los campos: hay datos vacíos o que superan el largo permitido.");
+      return;
+    }
+
+    setFormData(normalizedData);
+    setFormError("");
 
     // Trigger celebratory confetti with our brand colors
     confettiBurst({
@@ -131,7 +174,21 @@ export function ContactForm() {
     <form
       className="rounded-3xl border border-border/80 bg-card/90 p-6 md:p-8 shadow-xl backdrop-blur-sm"
       onSubmit={handleSubmit}
+      onChange={() => setFormError("")}
     >
+      <div
+        aria-hidden="true"
+        className="absolute -left-[10000px] top-auto size-px overflow-hidden"
+      >
+        <label htmlFor="website">Dejá este campo vacío</label>
+        <input
+          id="website"
+          name="website"
+          type="text"
+          tabIndex={-1}
+          autoComplete="off"
+        />
+      </div>
       <div className="mb-6 flex items-center justify-between border-b border-border/50 pb-4">
         <div>
           <h3 className="text-lg font-bold text-foreground">
@@ -153,6 +210,11 @@ export function ContactForm() {
             name="name"
             placeholder="Ej: Martín Rodríguez"
             required
+            maxLength={MAX_LENGTHS.name}
+            autoComplete="name"
+            onFocus={() => {
+              formStartedAt.current ??= Date.now();
+            }}
             value={formData.name}
             onChange={(e) => setFormData({ ...formData, name: e.target.value })}
             className="rounded-xl"
@@ -168,6 +230,11 @@ export function ContactForm() {
             type="email"
             placeholder="martin@empresa.com"
             required
+            maxLength={MAX_LENGTHS.email}
+            autoComplete="email"
+            onFocus={() => {
+              formStartedAt.current ??= Date.now();
+            }}
             value={formData.email}
             onChange={(e) => setFormData({ ...formData, email: e.target.value })}
             className="rounded-xl"
@@ -183,6 +250,10 @@ export function ContactForm() {
           id="subject"
           name="subject"
           placeholder="Ej: Quiero un sistema para gestionar stock y ventas"
+          maxLength={MAX_LENGTHS.subject}
+          onFocus={() => {
+            formStartedAt.current ??= Date.now();
+          }}
           value={formData.subject}
           onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
           className="rounded-xl"
@@ -199,10 +270,20 @@ export function ContactForm() {
           placeholder="¿Qué problema tenés actualmente? ¿Cómo lo resolvés hoy?"
           className="min-h-32 rounded-xl text-sm leading-relaxed"
           required
+          maxLength={MAX_LENGTHS.message}
+          onFocus={() => {
+            formStartedAt.current ??= Date.now();
+          }}
           value={formData.message}
           onChange={(e) => setFormData({ ...formData, message: e.target.value })}
         />
       </div>
+
+      {formError && (
+        <p role="alert" className="mt-3 text-sm text-destructive">
+          {formError}
+        </p>
+      )}
 
       <div className="mt-6 flex flex-col sm:flex-row items-center gap-3">
         <Button
